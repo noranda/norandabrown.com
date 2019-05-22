@@ -1,0 +1,33 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10.15.3-browsers
+
+    environment:
+      - JOBS: "2"
+
+    working_directory: ~/app
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install node packages
+          command: yarn install --frozen-lockfile
+
+      - deploy:
+          name: Deploy
+          command: |
+            set -e
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              sudo apt-get update
+              sudo apt-get install -y --no-install-recommends rsync
+
+              echo -e "\n\nHost portfolio\n  User noranda82_norandaresume\n  Hostname ssh.phx.nearlyfreespeech.net" >> ~/.ssh/config
+              ssh-keygen -F ssh.phx.nearlyfreespeech.net || ssh-keyscan -H ssh.phx.nearlyfreespeech.net >> ~/.ssh/known_hosts
+
+              yarn run build
+              rsync -rvz --no-perms --no-owner --no-group --chmod=Du=rwx,Dg=rx,Do=rx,Fu=rw,Fg=r,Fo=r --delete build/ portfolio:/home/public
+            fi
