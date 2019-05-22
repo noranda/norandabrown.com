@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<!-- index.html
+     norandabrown.com
+     Author: Noranda Brown
+     Last Modified: 10 Sept 2014 -->
+
+<html lang="en-US">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width,initial-scale=1" name="viewport" />
+    <meta content="Noranda Brown" name="author" />
+    <link href="//fonts.googleapis.com/css?family=Raleway|Marmelad" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=Dawning+of+a+New+Day" rel="stylesheet" />
+    <link href="//fonts.googleapis.com/css?family=The+Girl+Next+Door" rel="stylesheet" />
+    <link href="/assets/application.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+        <script src="/assets/html5shiv.js"></script>
+        <script src="/assets/selectivizr.js"></script>
+    <![endif]-->
+    <title>Noranda Brown</title>
+</head>
+<body>
+    <div class="wrapper">
+        <!--#include virtual="/logo_header.shtml" -->
+        <section class="content">
+            <p>Welcome to Noranda Brown's online portfolio.</p>
+            <p>I am a freelance web designer and developer based out of Bedford, MA.</p>
+            <p>At the moment, I am building my portfolio and working towards my M.A.
+               in Computer Science at Brandeis University.</p>
+            <p>This portfolio is in the process of a complete revamp. Stay tuned!</p>
+            <img src="assets/images/Resume_Infographic.jpg" alt="Resume Infographic" width="880"/>
+        </section>         
+    </div>
+</body>
+</html>

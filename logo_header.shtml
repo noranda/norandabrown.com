@@ -1,0 +1,28 @@
+<!-- BEGIN LOGO HEADER -->
+
+<header class="logo">
+    <nav>
+        <ul>
+            <li>
+                <a class="nav_home" href="/">
+                    <span class="nav_button">Home</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav_about" href="/about.shtml">
+                    <span class="nav_button">About Me</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav_resume" href="/resume.shtml">
+                    <span class="nav_button">R&eacute;sum&eacute;
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <img class="logo_image" src="/assets/images/nora3.gif" alt="Noranda Logo" />
+    <p class="logo_name">noranda brown</p>
+    <p class="logo_caption">design &amp; development</p>
+</header>
+
+<!-- END LOGO HEADER -->
