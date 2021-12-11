@@ -1,36 +1,49 @@
 {
   "name": "norandabrown.com",
-  "version": "0.1.0",
   "private": true,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.18",
-    "@fortawesome/free-brands-svg-icons": "^5.8.2",
-    "@fortawesome/free-solid-svg-icons": "^5.8.2",
-    "@fortawesome/react-fontawesome": "^0.1.4",
-    "node-sass": "^4.12.0",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "react-scripts": "3.0.1"
-  },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "prepare": "husky install"
   },
-  "eslintConfig": {
-    "extends": "react-app"
+  "dependencies": {
+    "@emotion/react": "^11.7.0",
+    "@emotion/styled": "^11.6.0",
+    "@mui/icons-material": "^5.2.1",
+    "@mui/material": "^5.2.3",
+    "clsx": "^1.1.1",
+    "next": "12.0.7",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
   },
-  "browserslist": {
-    "production": [
-      "last 2 chrome versions",
-      "last 2 firefox versions",
-      "last 2 safari versions"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
+  "devDependencies": {
+    "@types/node": "16.11.12",
+    "@types/react": "17.0.37",
+    "eslint": "8.4.1",
+    "eslint-config-next": "12.0.7",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.1.2",
+    "prettier": "2.5.1",
+    "typescript": "4.5.3"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint src/ --fix",
+      "git add"
     ]
-  }
+  },
+  "browserslist": [
+    "last 2 Chrome versions",
+    "last 2 Firefox versions",
+    "last 2 Safari versions"
+  ]
 }

@@ -6,7 +6,7 @@ jobs:
       - image: circleci/node:10.15.3-browsers
 
     environment:
-      - JOBS: "2"
+      - JOBS: '2'
 
     working_directory: ~/app
 
