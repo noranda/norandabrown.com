@@ -1,0 +1,60 @@
+import type { ReactElement } from 'react';
+import { Box, IconButton, Stack, Typography } from '@mui/material';
+import { CheckCircle as CheckIcon, Circle as CircleIcon, Link as LinkIcon } from '@mui/icons-material';
+
+import { useThemeContext } from '@/context/ThemeContext';
+
+type EducationProps = {
+  degree: string;
+  descriptions: ReactElement[];
+  institution: string;
+  institutionUrl: string;
+  isLast?: boolean;
+  timePeriod: string;
+};
+
+const Education = ({ degree, descriptions, institution, institutionUrl, isLast, timePeriod }: EducationProps) => {
+  const { theme } = useThemeContext();
+
+  return (
+    <Stack bgcolor={theme.colorHighlight} direction="row" p={3} my={1}>
+      <CircleIcon sx={{ color: theme.bgAlternate, mt: 0.5, fontSize: '0.8em' }} />
+      <Box borderLeft="1px solid" ml={-0.8} mt={0.8} mb={isLast ? 0 : -10} zIndex={1}></Box>
+
+      <Stack ml={4}>
+        <Typography variant="h4">{timePeriod}</Typography>
+
+        <Stack alignItems="center" direction="row" width="200px">
+          <Typography variant="h6" whiteSpace="nowrap">
+            {institution}
+          </Typography>
+
+          <IconButton
+            component="a"
+            href={institutionUrl}
+            rel="noopener noreferrer"
+            target="_blank"
+            aria-label={institution}
+            size="small"
+            sx={{ color: theme.colorPrimary, ml: 0.5 }}
+          >
+            <LinkIcon fontSize="small" />
+          </IconButton>
+        </Stack>
+
+        <Typography variant="h4">{degree}</Typography>
+      </Stack>
+
+      <Stack>
+        {descriptions.map((desc, index) => (
+          <Stack key={index} direction="row" ml={3}>
+            <CheckIcon sx={{ fontSize: '0.8em', mt: 0.5, mr: 1 }} />
+            <Typography variant="h6">{desc}</Typography>
+          </Stack>
+        ))}
+      </Stack>
+    </Stack>
+  );
+};
+
+export default Education;

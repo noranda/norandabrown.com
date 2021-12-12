@@ -15,7 +15,7 @@ const Portfolio: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Stack bgcolor={theme.bgPrimary} color={theme.colorPrimary} component="main" minHeight="calc(100vh - 63px)">
+      <Stack bgcolor={theme.bgPrimary} color={theme.colorPrimary} component="main" height="100%">
         Portfolio page
       </Stack>
     </>

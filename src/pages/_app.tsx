@@ -1,6 +1,6 @@
 import type { AppProps } from 'next/app';
+import { Box, CssBaseline, Stack } from '@mui/material';
 import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
 
 import Nav from '@/components/Nav';
 import ParallaxBackground from '@/components/ParallaxBackground';
@@ -15,9 +15,13 @@ function NorandaBrownApp({ Component, pageProps }: AppProps) {
       <ThemeContextProvider>
         <ParallaxContextProvider>
           <CssBaseline />
-          <Nav />
           <ParallaxBackground />
-          <Component {...pageProps} />
+          <Stack height="100vh">
+            <Nav />
+            <Box flexGrow={1} sx={{ overflowY: 'auto' }}>
+              <Component {...pageProps} />
+            </Box>
+          </Stack>
         </ParallaxContextProvider>
       </ThemeContextProvider>
     </ThemeProvider>

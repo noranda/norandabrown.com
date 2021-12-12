@@ -10,7 +10,15 @@ const Nav = () => {
   const { on, toggleParallax } = useParallaxContext();
 
   return (
-    <Stack alignItems="center" bgcolor={theme.bgPrimary} direction="row" justifyContent="space-between" px={3} py={1}>
+    <Stack
+      alignItems="center"
+      bgcolor={theme.bgPrimary}
+      direction="row"
+      flexGrow={0}
+      justifyContent="space-between"
+      px={3}
+      py={1}
+    >
       <Stack direction="row" spacing={1}>
         <Button onClick={switchTheme} sx={{ color: theme.colorPrimary }}>
           <>

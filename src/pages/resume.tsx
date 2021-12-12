@@ -1,25 +1,18 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import { Stack } from '@mui/material';
 
-import { useThemeContext } from '@/context/ThemeContext';
+import Resume from '@/components/Resume';
 
-const Resume: NextPage = () => {
-  const { theme } = useThemeContext();
+const ResumePage: NextPage = () => (
+  <>
+    <Head>
+      <title>Noranda Brown Resume</title>
+      <meta name="description" content="Noranda Brown Resume" />
+      <link rel="icon" href="/favicon.ico" />
+    </Head>
 
-  return (
-    <>
-      <Head>
-        <title>Noranda Brown Resume</title>
-        <meta name="description" content="Noranda Brown Resume" />
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
+    <Resume />
+  </>
+);
 
-      <Stack bgcolor={theme.bgPrimary} color={theme.colorPrimary} component="main" minHeight="calc(100vh - 63px)">
-        Resume page
-      </Stack>
-    </>
-  );
-};
-
-export default Resume;
+export default ResumePage;

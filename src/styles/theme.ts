@@ -2,17 +2,10 @@ import { createTheme } from '@mui/material/styles';
 
 const commonColors = {
   black: '#282c33',
-  darkPurple: '#363446',
   gray: '#b3bfcd',
   grayBlue: '#7894b3',
-  green: '#4db6ac',
-  lightGreen: '#98c7bd',
-  lightPurple: '#635d71',
-  orange: '#fddda1',
   white: '#ffffff',
 };
-
-const commonPalette = {};
 
 const breakpoints = {
   values: {
@@ -31,8 +24,18 @@ const typography = {
   h1: {
     fontWeight: 600,
   },
+  h3: {
+    fontSize: '1.5em',
+  },
+  h4: {
+    fontSize: '1em',
+    fontWeight: 600,
+  },
+  h5: {
+    fontSize: '1em',
+  },
   h6: {
-    fontSize: '1.1em',
+    fontSize: '0.9em',
     fontWeight: 400,
   },
   webkitFontSmoothing: 'antialiased',
@@ -42,12 +45,11 @@ export const defaultTheme = createTheme({
   breakpoints,
   typography,
   palette: {
-    ...commonPalette,
     primary: {
       main: commonColors.black,
     },
     secondary: {
-      main: commonColors.green,
+      main: commonColors.grayBlue,
     },
     common: { ...commonColors },
     background: {

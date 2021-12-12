@@ -8,7 +8,6 @@ import NorandaImage from '@/assets/images/noranda.jpg';
 
 const Home: NextPage = () => {
   const { theme } = useThemeContext();
-  console.debug('theme', theme);
 
   return (
     <>
@@ -18,7 +17,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Stack bgcolor={theme.bgPrimary} color={theme.colorPrimary} component="main" minHeight="calc(100vh - 63px)">
+      <Stack bgcolor={theme.bgPrimary} color={theme.colorPrimary} component="main" height="100%">
         <Stack alignItems="center" marginTop="5%" width="100%">
           <Avatar alt="Noranda Brown" src={NorandaImage.src} sx={{ width: 200, height: 200 }} />
 
@@ -26,8 +25,8 @@ const Home: NextPage = () => {
             Hi, I&apos;m Noranda!
           </Typography>
 
-          <Typography component="div" mb={3} variant="h5">
-            UI Designer | Front-end Developer
+          <Typography component="div" mb={3} variant="h3">
+            UI Designer | Frontend Developer
           </Typography>
 
           <SocialMedia />
