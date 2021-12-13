@@ -10,7 +10,7 @@ const MyCodingPrinciples = () => {
   return (
     <Grid container bgcolor={alpha(theme.colorPrimary, 0.1)} p={2} spacing={1} width="100%">
       <Principle label="Modular" icon={<ModularIcon />}>
-        <>Create a function once, use it twice! Keep code DRY and easy to reason about.</>
+        <>Modularization makes code easy to understand and more maintainable. Keep the code DRY!</>
       </Principle>
 
       <Principle label="Style" icon={<StyleIcon />}>

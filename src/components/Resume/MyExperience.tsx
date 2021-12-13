@@ -1,7 +1,7 @@
 import { alpha, Stack } from '@mui/material';
 
 import Experience from './Experience';
-import Highlight from '@/components/Highlight';
+import Highlight from '@/components/elements/Highlight';
 import { useThemeContext } from '@/context/ThemeContext';
 
 const MyExperience = () => {
@@ -26,7 +26,7 @@ const MyExperience = () => {
       and design ideas.
     </>,
     <>
-      Bringing mock-ups to life using <Highlight>HTML</Highlight>, <Highlight>CSS</Highlight>,{' '}
+      Bringing mockups to life using <Highlight>HTML</Highlight>, <Highlight>CSS</Highlight>,{' '}
       <Highlight>JavaScript</Highlight>, <Highlight>ReactJS</Highlight>, <Highlight>Next.js</Highlight>, and{' '}
       <Highlight>Material UI</Highlight>.
     </>,
@@ -58,7 +58,7 @@ const MyExperience = () => {
         companyUrl="https://www.mitre.org/"
         descriptions={descriptionsMITRE}
         position="UI Designer &amp; Developer, Senior"
-        timePeriod="2013-present"
+        timePeriod="2014-present"
       />
 
       <Experience
@@ -66,7 +66,7 @@ const MyExperience = () => {
         companyUrl="https://www.brandeis.edu/"
         descriptions={descriptionsBrandeis}
         position="Web Developer"
-        timePeriod="2012-2013"
+        timePeriod="2013-2014"
       />
 
       <Experience

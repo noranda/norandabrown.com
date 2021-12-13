@@ -17,7 +17,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Stack bgcolor={theme.bgPrimary} color={theme.colorPrimary} component="main" height="100%">
+      <Stack bgcolor={theme.bgPrimary} color={theme.colorPrimary} component="main" minHeight="100%">
         <Stack alignItems="center" marginTop="5%" width="100%">
           <Avatar alt="Noranda Brown" src={NorandaImage.src} sx={{ width: 200, height: 200 }} />
 

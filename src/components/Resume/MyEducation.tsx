@@ -5,7 +5,7 @@ import { useThemeContext } from '@/context/ThemeContext';
 
 const MyEducation = () => {
   const { theme } = useThemeContext();
-  const descriptionsBrandeis = [<>GPA: 3.9</>];
+  const descriptionsBrandeis = [<>GPA: 3.9</>, <>+Post-Baccalaureate Certificate in Computer Science</>];
   const descriptionsWellesley = [<>GPA: 3.7</>, <>Magna Cum Laude</>, <>Focus in Computer Science</>];
 
   return (

@@ -6,7 +6,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "export": "next export"
   },
   "dependencies": {
     "@emotion/react": "^11.7.0",

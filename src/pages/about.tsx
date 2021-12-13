@@ -2,7 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import { Avatar, Stack, Typography } from '@mui/material';
 
-import Highlight from '@/components/Highlight';
+import Highlight from '@/components/elements/Highlight';
 import { useThemeContext } from '@/context/ThemeContext';
 import CatsImage from '@/assets/images/cats.jpg';
 import NorandaRocksImage from '@/assets/images/noranda-rocks.jpg';
@@ -19,7 +19,7 @@ const About: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Stack bgcolor={theme.bgPrimary} color={theme.textPrimary} component="main" height="100%">
+      <Stack bgcolor={theme.bgPrimary} color={theme.textPrimary} component="main" minHeight="100%">
         <Stack alignItems="center" justifyContent="space-around" m="auto" width="50%">
           <Typography component="div" my={2} variant="h2">
             About Me

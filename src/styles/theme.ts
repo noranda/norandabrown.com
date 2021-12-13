@@ -43,6 +43,15 @@ const typography = {
 
 export const defaultTheme = createTheme({
   breakpoints,
+  components: {
+    MuiChip: {
+      styleOverrides: {
+        filled: {
+          backgroundColor: commonColors.black,
+        },
+      },
+    },
+  },
   typography,
   palette: {
     primary: {
