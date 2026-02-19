@@ -48,21 +48,11 @@
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-/* Base styles */
-* {
-  @apply border-border;
-}
-
-body {
-  @apply bg-background text-foreground;
-  font-family:
-    'Figtree',
-    system-ui,
-    -apple-system,
-    sans-serif;
-  font-feature-settings:
-    'rlig' 1,
-    'calt' 1;
+/* Custom utility: dot pattern background */
+@utility bg-dot-pattern {
+  background-image: radial-gradient(circle, currentColor 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+  opacity: 0.08;
 }
 
 /* Reduced motion support */
@@ -78,6 +68,8 @@ body {
 }
 
 @theme inline {
+  --font-sans: 'Figtree', system-ui, -apple-system, sans-serif;
+  --font-display: 'Playfair Display', serif;
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
@@ -153,10 +145,13 @@ body {
 }
 
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
   * {
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background font-sans text-foreground;
   }
 }
