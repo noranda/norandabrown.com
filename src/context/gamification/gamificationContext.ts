@@ -105,6 +105,4 @@ export const ACHIEVEMENTS: AchievementDefinition[] = [
   },
 ];
 
-export const GamificationContext = createContext<GamificationContextType | undefined>(
-  undefined
-);
+export const GamificationContext = createContext<GamificationContextType | undefined>(undefined);

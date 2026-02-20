@@ -46,7 +46,8 @@ export const RESUME: ResumeData = {
         'Pushed AI adoption across engineering org',
       ],
       id: 'exp-1',
-      reality: 'Fought 47 battles about button border radius. Button won most of them. Also built components.',
+      reality:
+        'Fought 47 battles about button border radius. Button won most of them. Also built components.',
       role: 'Senior Frontend Engineer',
       startDate: '2023',
       techStack: ['React', 'TypeScript', 'Tailwind CSS', 'Storybook'],

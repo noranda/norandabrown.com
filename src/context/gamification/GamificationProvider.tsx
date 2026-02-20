@@ -58,65 +58,53 @@ export const GamificationProvider = ({children}: {children: React.ReactNode}) =>
     [state.unlockedAchievements]
   );
 
-  const unlockAchievement = useCallback(
-    (id: AchievementId) => {
-      setState((prev) => {
-        if (id in prev.unlockedAchievements) return prev;
-        return {
-          ...prev,
-          unlockedAchievements: {
-            ...prev.unlockedAchievements,
-            [id]: Date.now(),
-          },
+  const unlockAchievement = useCallback((id: AchievementId) => {
+    setState((prev) => {
+      if (id in prev.unlockedAchievements) return prev;
+      return {
+        ...prev,
+        unlockedAchievements: {
+          ...prev.unlockedAchievements,
+          [id]: Date.now(),
+        },
+      };
+    });
+  }, []);
+
+  const trackPageVisit = useCallback((page: string) => {
+    setState((prev) => {
+      if (prev.visitedPages.includes(page)) return prev;
+      const visitedPages = [...prev.visitedPages, page];
+      const next = {...prev, visitedPages};
+
+      // Auto-unlock explorer if all main pages visited
+      if (
+        !('explorer' in prev.unlockedAchievements) &&
+        MAIN_PAGES.every((p) => visitedPages.includes(p))
+      ) {
+        next.unlockedAchievements = {
+          ...next.unlockedAchievements,
+          explorer: Date.now(),
         };
-      });
-    },
-    []
-  );
+      }
 
-  const trackPageVisit = useCallback(
-    (page: string) => {
-      setState((prev) => {
-        if (prev.visitedPages.includes(page)) return prev;
-        const visitedPages = [...prev.visitedPages, page];
-        const next = {...prev, visitedPages};
+      return next;
+    });
+  }, []);
 
-        // Auto-unlock explorer if all main pages visited
-        if (
-          !('explorer' in prev.unlockedAchievements) &&
-          MAIN_PAGES.every((p) => visitedPages.includes(p))
-        ) {
-          next.unlockedAchievements = {
-            ...next.unlockedAchievements,
-            explorer: Date.now(),
-          };
-        }
+  const trackProjectView = useCallback((projectId: string) => {
+    setState((prev) => {
+      if (prev.viewedProjects.includes(projectId)) return prev;
+      return {...prev, viewedProjects: [...prev.viewedProjects, projectId]};
+    });
+  }, []);
 
-        return next;
-      });
-    },
-    []
-  );
-
-  const trackProjectView = useCallback(
-    (projectId: string) => {
-      setState((prev) => {
-        if (prev.viewedProjects.includes(projectId)) return prev;
-        return {...prev, viewedProjects: [...prev.viewedProjects, projectId]};
-      });
-    },
-    []
-  );
-
-  const trackComponentView = useCallback(
-    (componentId: string) => {
-      setState((prev) => {
-        if (prev.viewedComponents.includes(componentId)) return prev;
-        return {...prev, viewedComponents: [...prev.viewedComponents, componentId]};
-      });
-    },
-    []
-  );
+  const trackComponentView = useCallback((componentId: string) => {
+    setState((prev) => {
+      if (prev.viewedComponents.includes(componentId)) return prev;
+      return {...prev, viewedComponents: [...prev.viewedComponents, componentId]};
+    });
+  }, []);
 
   const trackDarkModeToggle = useCallback(() => {
     setState((prev) => {
@@ -182,7 +170,5 @@ export const GamificationProvider = ({children}: {children: React.ReactNode}) =>
     ]
   );
 
-  return (
-    <GamificationContext.Provider value={value}>{children}</GamificationContext.Provider>
-  );
+  return <GamificationContext.Provider value={value}>{children}</GamificationContext.Provider>;
 };

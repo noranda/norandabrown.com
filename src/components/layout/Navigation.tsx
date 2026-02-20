@@ -1,4 +1,5 @@
 import {NavLink} from 'react-router-dom';
+import {twJoin} from 'tailwind-merge';
 
 const NAV_LINKS = [
   {label: 'Work', to: '/work'},
@@ -14,15 +15,14 @@ type NavigationProps = {
 
 export const Navigation = ({className = '', onClick}: NavigationProps) => {
   return (
-    <nav className={`flex gap-6 ${className}`}>
+    <nav aria-label="Primary navigation" className={twJoin('flex gap-6', className)}>
       {NAV_LINKS.map(({label, to}) => (
         <NavLink
           className={({isActive}) =>
-            `text-sm font-medium transition-colors ${
-              isActive
-                ? 'text-foreground'
-                : 'text-muted-foreground hover:text-foreground'
-            }`
+            twJoin(
+              'text-sm font-medium transition-colors',
+              isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
+            )
           }
           key={to}
           onClick={onClick}

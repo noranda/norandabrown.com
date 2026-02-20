@@ -2,12 +2,12 @@ import {lazy, Suspense} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import {Layout} from './components/layout/Layout';
 
-const About = lazy(() => import('./pages/About'));
-const Components = lazy(() => import('./pages/Components'));
-const Home = lazy(() => import('./pages/Home'));
-const NotFound = lazy(() => import('./pages/NotFound'));
-const Resume = lazy(() => import('./pages/Resume'));
-const Work = lazy(() => import('./pages/Work'));
+const About = lazy(() => import('./pages/about'));
+const Components = lazy(() => import('./pages/components'));
+const Home = lazy(() => import('./pages/home'));
+const NotFound = lazy(() => import('./pages/notFound'));
+const Resume = lazy(() => import('./pages/resume'));
+const Work = lazy(() => import('./pages/work'));
 
 const Loading = () => (
   <div className="flex min-h-screen items-center justify-center">
