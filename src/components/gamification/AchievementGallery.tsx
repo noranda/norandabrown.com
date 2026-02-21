@@ -41,7 +41,7 @@ export const AchievementGallery = ({onClose, open}: AchievementGalleryProps) => 
 
   return (
     <Dialog onOpenChange={(isOpen) => !isOpen && onClose()} open={open}>
-      <Dialog.Content className="sm:max-w-xl">
+      <Dialog.Content className="flex h-[100dvh] max-h-none max-w-none flex-col rounded-none border-0 sm:h-auto sm:max-h-[calc(100vh-2rem)] sm:max-w-xl sm:rounded-lg sm:border">
         <Dialog.Header>
           <Dialog.Title className="flex items-center gap-2">
             <FontAwesomeIcon className="text-warning" icon={faTrophy} />
@@ -57,38 +57,40 @@ export const AchievementGallery = ({onClose, open}: AchievementGalleryProps) => 
           </Dialog.Description>
         </Dialog.Header>
 
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-2">
-          {ACHIEVEMENTS.map((achievement) => {
-            const unlocked = isUnlocked(achievement.id);
-            const icon = ACHIEVEMENT_ICONS[achievement.id];
+        <div className="-mx-6 min-h-0 flex-1 overflow-y-auto px-6">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            {ACHIEVEMENTS.map((achievement) => {
+              const unlocked = isUnlocked(achievement.id);
+              const icon = ACHIEVEMENT_ICONS[achievement.id];
 
-            return (
-              <div
-                className={`flex items-start gap-3 rounded-lg border p-3 transition-colors ${
-                  unlocked ? 'border-brand/30 bg-brand/5' : 'border-border bg-muted/30 opacity-60'
-                }`}
-                key={achievement.id}
-              >
+              return (
                 <div
-                  className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
-                    unlocked
-                      ? 'bg-gradient-to-br from-brand to-brand-accent text-brand-foreground'
-                      : 'bg-muted text-muted-foreground'
+                  className={`flex items-start gap-3 rounded-lg border p-3 transition-colors ${
+                    unlocked ? 'border-brand/30 bg-brand/5' : 'border-border bg-muted/30 opacity-60'
                   }`}
+                  key={achievement.id}
                 >
-                  <FontAwesomeIcon className="text-sm" icon={unlocked ? icon : faLock} />
+                  <div
+                    className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-lg ${
+                      unlocked
+                        ? 'bg-gradient-to-br from-brand to-brand-accent text-brand-foreground'
+                        : 'bg-muted text-muted-foreground'
+                    }`}
+                  >
+                    <FontAwesomeIcon className="text-sm" icon={unlocked ? icon : faLock} />
+                  </div>
+                  <div className="min-w-0">
+                    <p className="text-sm font-medium leading-tight">
+                      {unlocked ? achievement.name : '???'}
+                    </p>
+                    <p className="mt-0.5 text-xs text-muted-foreground">
+                      {unlocked ? achievement.description : 'Keep exploring...'}
+                    </p>
+                  </div>
                 </div>
-                <div className="min-w-0">
-                  <p className="text-sm font-medium leading-tight">
-                    {unlocked ? achievement.name : '???'}
-                  </p>
-                  <p className="mt-0.5 text-xs text-muted-foreground">
-                    {unlocked ? achievement.description : 'Keep exploring...'}
-                  </p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
 
         <div className="mt-1">

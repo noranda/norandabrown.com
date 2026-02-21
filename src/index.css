@@ -49,6 +49,7 @@
   --brand: oklch(0.558 0.288 302.321);
   --brand-accent: oklch(0.592 0.249 0.584);
   --brand-foreground: oklch(1 0 0);
+  --brand-warm: oklch(0.702 0.183 58.722);
   --destructive-foreground: oklch(1 0 0);
   --info: oklch(0.606 0.25 292.717);
   --success: oklch(0.696 0.17 162.48);
@@ -116,6 +117,7 @@
   --color-brand: var(--brand);
   --color-brand-accent: var(--brand-accent);
   --color-brand-foreground: var(--brand-foreground);
+  --color-brand-warm: var(--brand-warm);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-info: var(--info);
@@ -197,4 +199,347 @@
       0 0 0 2px var(--color-background),
       0 0 0 4px var(--color-ring);
   }
+}
+
+/* ── Photo Circle: Animated Ring ── */
+@property --ring-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.photo-ring {
+  position: relative;
+  padding: 6px;
+  background: conic-gradient(
+    from var(--ring-angle, 0deg),
+    var(--brand),
+    var(--brand-accent),
+    var(--brand-warm),
+    var(--warning),
+    var(--brand)
+  );
+  animation: spin-ring 4s linear infinite;
+}
+
+.photo-ring::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 9999px;
+  background: conic-gradient(
+    from var(--ring-angle, 0deg),
+    var(--brand),
+    var(--brand-accent),
+    var(--brand-warm),
+    var(--warning),
+    var(--brand)
+  );
+  filter: blur(16px);
+  opacity: 0.5;
+  z-index: -1;
+  animation: glow-pulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes spin-ring {
+  to {
+    --ring-angle: 360deg;
+  }
+}
+
+@keyframes glow-pulse {
+  0% {
+    opacity: 0.3;
+    filter: blur(12px);
+  }
+  100% {
+    opacity: 0.6;
+    filter: blur(20px);
+  }
+}
+
+/* ── Photo Circle: Hover effects ── */
+@media (hover: hover) {
+  .photo-circle:hover .photo-ring {
+    animation:
+      spin-ring 4s linear infinite,
+      shake-pulse 2s ease-in-out infinite;
+  }
+
+  .photo-circle:hover .photo-ring::after {
+    opacity: 0.8;
+    filter: blur(24px);
+  }
+
+  .photo-circle:hover .sparkle {
+    animation-duration: 1s !important;
+  }
+}
+
+.photo-circle.photo-tapped .photo-ring {
+  animation:
+    spin-ring 4s linear infinite,
+    shake-pulse 2s ease-in-out infinite;
+}
+
+.photo-circle.photo-tapped .photo-ring::after {
+  opacity: 0.8;
+  filter: blur(24px);
+}
+
+.photo-circle.photo-tapped .sparkle {
+  animation-duration: 1s !important;
+}
+
+@keyframes shake-pulse {
+  0%,
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+  15% {
+    transform: scale(1.02) rotate(-1.5deg);
+  }
+  30% {
+    transform: scale(0.99) rotate(1deg);
+  }
+  45% {
+    transform: scale(1.03) rotate(-1deg);
+  }
+  60% {
+    transform: scale(0.98) rotate(1.5deg);
+  }
+  75% {
+    transform: scale(1.02) rotate(-0.5deg);
+  }
+}
+
+/* ── Photo Circle: Shine sweep ── */
+.photo-shine {
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-shine::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -60%;
+  width: 40%;
+  height: 200%;
+  background: linear-gradient(
+    105deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.3) 45%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0.3) 55%,
+    transparent 60%
+  );
+  transform: rotate(25deg);
+  animation: shine-sweep 5s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes shine-sweep {
+  0%,
+  70%,
+  100% {
+    left: -60%;
+  }
+  80% {
+    left: 120%;
+  }
+}
+
+/* ── Photo Circle: Sparkle particles ── */
+.sparkle-container {
+  position: absolute;
+  inset: -20px;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: var(--brand-foreground);
+  border-radius: 50%;
+  animation: sparkle-float 3s ease-in-out infinite;
+  box-shadow:
+    0 0 6px 2px oklch(from var(--brand) l c h / 0.6),
+    0 0 12px 4px oklch(from var(--brand-accent) l c h / 0.3);
+}
+
+/* Large sparkles */
+.sparkle:nth-child(1) {
+  top: 2%;
+  left: 12%;
+  animation-delay: 0s;
+  animation-duration: 2.5s;
+  width: 8px;
+  height: 8px;
+}
+.sparkle:nth-child(2) {
+  top: 12%;
+  right: 3%;
+  animation-delay: 0.8s;
+  animation-duration: 3.2s;
+  width: 7px;
+  height: 7px;
+}
+.sparkle:nth-child(3) {
+  bottom: 18%;
+  left: 1%;
+  animation-delay: 1.5s;
+  animation-duration: 2.8s;
+  width: 9px;
+  height: 9px;
+}
+.sparkle:nth-child(4) {
+  bottom: 5%;
+  right: 12%;
+  animation-delay: 0.3s;
+  animation-duration: 3.5s;
+  width: 7px;
+  height: 7px;
+}
+
+/* Medium sparkles */
+.sparkle:nth-child(5) {
+  top: 42%;
+  left: -3%;
+  animation-delay: 2s;
+  animation-duration: 2.2s;
+  width: 5px;
+  height: 5px;
+}
+.sparkle:nth-child(6) {
+  top: 38%;
+  right: -2%;
+  animation-delay: 1.2s;
+  animation-duration: 3s;
+  width: 6px;
+  height: 6px;
+}
+.sparkle:nth-child(7) {
+  top: 8%;
+  left: 38%;
+  animation-delay: 0.5s;
+  animation-duration: 2.7s;
+  width: 5px;
+  height: 5px;
+}
+.sparkle:nth-child(8) {
+  bottom: 12%;
+  right: 30%;
+  animation-delay: 1.8s;
+  animation-duration: 3.3s;
+  width: 5px;
+  height: 5px;
+}
+.sparkle:nth-child(9) {
+  top: 25%;
+  left: -1%;
+  animation-delay: 2.5s;
+  animation-duration: 2.4s;
+  width: 6px;
+  height: 6px;
+}
+.sparkle:nth-child(10) {
+  bottom: 35%;
+  right: -1%;
+  animation-delay: 0.6s;
+  animation-duration: 2.9s;
+  width: 5px;
+  height: 5px;
+}
+
+/* Small sparkles */
+.sparkle:nth-child(11) {
+  top: 0%;
+  left: 30%;
+  animation-delay: 1s;
+  animation-duration: 2s;
+  width: 3px;
+  height: 3px;
+}
+.sparkle:nth-child(12) {
+  top: 20%;
+  right: 15%;
+  animation-delay: 2.2s;
+  animation-duration: 2.6s;
+  width: 3px;
+  height: 3px;
+}
+.sparkle:nth-child(13) {
+  bottom: 2%;
+  left: 25%;
+  animation-delay: 0.4s;
+  animation-duration: 3.1s;
+  width: 4px;
+  height: 4px;
+}
+.sparkle:nth-child(14) {
+  bottom: 28%;
+  left: -2%;
+  animation-delay: 1.7s;
+  animation-duration: 2.3s;
+  width: 3px;
+  height: 3px;
+}
+.sparkle:nth-child(15) {
+  top: 55%;
+  right: -3%;
+  animation-delay: 0.9s;
+  animation-duration: 3.4s;
+  width: 4px;
+  height: 4px;
+}
+.sparkle:nth-child(16) {
+  top: -1%;
+  right: 25%;
+  animation-delay: 2.8s;
+  animation-duration: 2.1s;
+  width: 3px;
+  height: 3px;
+}
+
+@keyframes sparkle-float {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) translateY(0);
+  }
+  30% {
+    opacity: 1;
+    transform: scale(1) translateY(-8px);
+  }
+  70% {
+    opacity: 1;
+    transform: scale(0.8) translateY(-4px);
+  }
+}
+
+/* ── Photo Circle: Image swap on hover ── */
+.photo-default {
+  display: block;
+}
+.photo-hover {
+  display: none;
+}
+
+@media (hover: hover) {
+  .photo-circle:hover .photo-default {
+    display: none;
+  }
+  .photo-circle:hover .photo-hover {
+    display: block;
+  }
+}
+
+.photo-circle.photo-tapped .photo-default {
+  display: none;
+}
+.photo-circle.photo-tapped .photo-hover {
+  display: block;
 }

@@ -15,7 +15,7 @@ export const ProgressTracker = () => {
     <>
       <Button
         aria-label={`Achievements: ${explorationScore}% complete. Click to view all achievements.`}
-        className="fixed bottom-6 right-6 z-40 gap-2.5 rounded-full px-4 py-2.5 shadow-lg transition-transform hover:scale-105 active:scale-95"
+        className="fixed bottom-6 right-6 z-40 gap-2.5 rounded-full border-2 border-background px-4 py-2.5 shadow-[0_0_12px_rgba(124,58,237,0.5),0_0_24px_rgba(124,58,237,0.25)] transition-transform hover:scale-105 active:scale-95"
         onClick={() => setGalleryOpen(true)}
         variant="gradient"
       >

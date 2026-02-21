@@ -1,5 +1,6 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
+import {twJoin} from 'tailwind-merge';
 // import {fireConfetti} from '@/components/gamification/confetti';
 import {DarkModeToggle} from '@/components/common/DarkModeToggle';
 import {Button} from '@/components/ui/button';
@@ -24,17 +25,17 @@ export const Header = () => {
           data-tour="tour-logo"
           to="/"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-accent">
+          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-brand-accent">
             <span className="font-bold text-brand-foreground">NB</span>
           </div>
-          <div className="hidden sm:block">
+          <div>
             <div className="font-bold">Noranda Brown</div>
             <div className="text-sm text-muted-foreground">Senior Frontend Engineer</div>
           </div>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden items-center gap-6 md:flex">
+        <div className="hidden items-center gap-6 lg:flex">
           {/* Availability Badge */}
           <div
             aria-label="Currently available for opportunities"
@@ -90,7 +91,7 @@ export const Header = () => {
         </div>
 
         {/* Mobile Menu Button */}
-        <div className="flex items-center gap-3 md:hidden">
+        <div className="flex items-center gap-3 lg:hidden">
           <DarkModeToggle />
           <Button
             aria-controls="mobile-menu"
@@ -124,23 +125,30 @@ export const Header = () => {
       </div>
 
       {/* Mobile Menu */}
-      {mobileMenuOpen && (
+      <div
+        className={twJoin(
+          'grid transition-[grid-template-rows] duration-300 ease-in-out lg:hidden',
+          mobileMenuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
+        )}
+      >
         <nav
           aria-label="Mobile navigation"
-          className="border-t border-border px-6 py-4 md:hidden"
+          className="overflow-hidden"
           id="mobile-menu"
         >
-          <Navigation className="flex-col gap-4" onClick={() => setMobileMenuOpen(false)} />
-          <div
-            aria-label="Currently available for opportunities"
-            className="mt-4 flex w-fit items-center gap-2 rounded-full bg-success-muted px-3 py-1.5 text-sm font-medium text-success-foreground"
-            role="status"
-          >
-            <div aria-hidden="true" className="h-2 w-2 rounded-full bg-success" />
-            Available
+          <div className="border-t border-border px-6 py-4">
+            <Navigation className="flex-col gap-4" onClick={() => setMobileMenuOpen(false)} />
+            <div
+              aria-label="Currently available for opportunities"
+              className="mt-4 flex w-fit items-center gap-2 rounded-full bg-success-muted px-3 py-1.5 text-sm font-medium text-success-foreground"
+              role="status"
+            >
+              <div aria-hidden="true" className="h-2 w-2 rounded-full bg-success" />
+              Available
+            </div>
           </div>
         </nav>
-      )}
+      </div>
     </header>
   );
 };
