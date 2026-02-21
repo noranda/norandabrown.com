@@ -15,12 +15,16 @@ type NavigationProps = {
 
 export const Navigation = ({className = '', onClick}: NavigationProps) => {
   return (
-    <nav aria-label="Primary navigation" className={twJoin('flex gap-6', className)}>
+    <nav
+      aria-label="Primary navigation"
+      className={twJoin('flex gap-6', className)}
+      data-tour="tour-nav"
+    >
       {NAV_LINKS.map(({label, to}) => (
         <NavLink
           className={({isActive}) =>
             twJoin(
-              'text-sm font-medium transition-colors',
+              'focus-ring rounded-md text-sm font-medium transition-colors',
               isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
             )
           }

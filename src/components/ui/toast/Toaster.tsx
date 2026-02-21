@@ -44,10 +44,11 @@ const Toaster = ({...props}: Omit<ToasterProps, 'theme'>) => {
         classNames: {
           closeButton:
             '!border-none !bg-transparent !size-6 !text-background !top-1/2 hover:!bg-background/20 hover:!text-background [&>svg]:!size-4',
+          description: '!text-background/80',
           error: '!border-destructive !shadow-[0_0_40px_rgba(244,63,94,0.6)]',
           info: '!border-info !shadow-[0_0_40px_rgba(139,92,246,0.6)]',
           success: '!border-success !shadow-[0_0_40px_rgba(16,185,129,0.6)]',
-          toast: '!bg-foreground !border-3 !text-base !text-background',
+          toast: '!bg-foreground !border-3 !pr-10 !text-base !text-background',
           warning: '!border-warning !shadow-[0_0_40px_rgba(245,158,11,0.6)]',
         },
       }}

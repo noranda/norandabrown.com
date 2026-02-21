@@ -10,6 +10,7 @@ import {
 } from '@/components/playground/DesignTokens';
 import {COMPONENTS, type ComponentShowcase, type ComponentStory} from '@/data/components';
 import {DESIGN_TOKEN_SECTIONS} from '@/data/designTokens';
+import {useGamification} from '@/hooks/useGamification';
 import {useTheme} from '@/hooks/useTheme';
 
 const STORYBOOK_URL = import.meta.env.DEV ? 'http://localhost:6006' : '/storybook';
@@ -78,8 +79,10 @@ const ComponentSection = ({component, theme}: {component: ComponentShowcase; the
 );
 
 export const Components = () => {
+  const {trackComponentView} = useGamification();
   const {theme} = useTheme();
   const [activeId, setActiveId] = useState(COMPONENTS[0].id);
+  const componentIds = useRef(new Set(COMPONENTS.map((c) => c.id)));
   const sectionRefs = useRef<Map<string, IntersectionObserverEntry>>(new Map());
 
   useEffect(() => {
@@ -95,6 +98,13 @@ export const Components = () => {
 
         if (visible.length > 0) {
           setActiveId(visible[0].target.id);
+
+          // Track component views for Gotta Catch 'Em All achievement
+          for (const entry of visible) {
+            if (componentIds.current.has(entry.target.id)) {
+              trackComponentView(entry.target.id);
+            }
+          }
         }
       },
       {rootMargin: '-96px 0px -60% 0px'}

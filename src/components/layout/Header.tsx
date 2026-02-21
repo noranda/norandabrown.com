@@ -1,11 +1,13 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
+// import {fireConfetti} from '@/components/gamification/confetti';
+import {DarkModeToggle} from '@/components/common/DarkModeToggle';
+import {Button} from '@/components/ui/button';
+import {Tooltip} from '@/components/ui/tooltip';
 import {useGamification} from '@/hooks/useGamification';
-import {useTheme} from '@/hooks/useTheme';
 import {Navigation} from './Navigation';
 
 export const Header = () => {
-  const {theme, toggleTheme} = useTheme();
   const {explorationScore} = useGamification();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -16,7 +18,12 @@ export const Header = () => {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
-        <Link aria-label="Noranda Brown — Home" className="flex items-center gap-3" to="/">
+        <Link
+          aria-label="Noranda Brown — Home"
+          className="focus-ring flex items-center gap-3 rounded-lg"
+          data-tour="tour-logo"
+          to="/"
+        >
           <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-brand to-brand-accent">
             <span className="font-bold text-brand-foreground">NB</span>
           </div>
@@ -32,6 +39,7 @@ export const Header = () => {
           <div
             aria-label="Currently available for opportunities"
             className="flex items-center gap-2 rounded-full bg-success-muted px-3 py-1.5 text-sm font-medium text-success-foreground"
+            data-tour="tour-availability"
             role="status"
           >
             <div aria-hidden="true" className="h-2 w-2 rounded-full bg-success" />
@@ -40,90 +48,57 @@ export const Header = () => {
 
           <Navigation />
 
+          {/* TODO: TEMP — remove after testing confetti
+          <Button onClick={fireConfetti} size="sm" variant="outline">
+            Test Confetti
+          </Button>
+          */}
+
           {/* Exploration Progress */}
           {explorationScore > 0 && (
-            <div
-              aria-label={`Exploration progress: ${explorationScore}%`}
-              aria-valuemax={100}
-              aria-valuemin={0}
-              aria-valuenow={explorationScore}
-              className="flex items-center gap-2 text-sm text-muted-foreground"
-              role="progressbar"
-            >
-              <div aria-hidden="true" className="h-1.5 w-16 overflow-hidden rounded-full bg-muted">
+            <Tooltip>
+              <Tooltip.Trigger asChild>
                 <div
-                  className="h-full rounded-full bg-gradient-to-r from-brand to-brand-accent transition-all duration-500"
-                  style={{width: `${explorationScore}%`}}
-                />
-              </div>
-              <span>{explorationScore}%</span>
-            </div>
+                  aria-label={`Exploration progress: ${explorationScore}%`}
+                  aria-valuemax={100}
+                  aria-valuemin={0}
+                  aria-valuenow={explorationScore}
+                  className="flex cursor-default items-center gap-2 text-sm text-muted-foreground"
+                  role="progressbar"
+                >
+                  <div
+                    aria-hidden="true"
+                    className="h-1.5 w-16 overflow-hidden rounded-full bg-muted"
+                  >
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-brand to-brand-accent transition-all duration-500"
+                      style={{width: `${explorationScore}%`}}
+                    />
+                  </div>
+                  <span>{explorationScore}%</span>
+                </div>
+              </Tooltip.Trigger>
+              <Tooltip.Content>
+                You&apos;ve explored {explorationScore}% of the site. Keep clicking!
+                <Tooltip.Arrow />
+              </Tooltip.Content>
+            </Tooltip>
           )}
 
           {/* Dark Mode Toggle */}
-          <button
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            className="rounded-lg p-2 transition-colors hover:bg-accent"
-            onClick={toggleTheme}
-            type="button"
-          >
-            {theme === 'light' ? (
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-              </svg>
-            ) : (
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-              </svg>
-            )}
-          </button>
+          <DarkModeToggle showTooltip />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-3 md:hidden">
-          <button
-            aria-label={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            className="rounded-lg p-2 transition-colors hover:bg-accent"
-            onClick={toggleTheme}
-            type="button"
-          >
-            {theme === 'light' ? (
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-              </svg>
-            ) : (
-              <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path
-                  d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                />
-              </svg>
-            )}
-          </button>
-          <button
+          <DarkModeToggle />
+          <Button
             aria-controls="mobile-menu"
             aria-expanded={mobileMenuOpen}
             aria-label="Toggle menu"
-            className="rounded-lg p-2 transition-colors hover:bg-accent"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            type="button"
+            size="icon"
+            variant="ghost"
           >
             {mobileMenuOpen ? (
               <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -144,7 +119,7 @@ export const Header = () => {
                 />
               </svg>
             )}
-          </button>
+          </Button>
         </div>
       </div>
 

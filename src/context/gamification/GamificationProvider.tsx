@@ -1,4 +1,8 @@
-import {useCallback, useEffect, useMemo, useState} from 'react';
+import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import {showAchievementToast} from '@/components/gamification/AchievementToast';
+import {fireBatConfetti, fireConfetti} from '@/components/gamification/confetti';
+import {COMPONENTS} from '@/data/components';
+import {PROJECTS} from '@/data/projects';
 import {
   ACHIEVEMENTS,
   GamificationContext,
@@ -48,10 +52,34 @@ const saveState = (state: GamificationState) => {
 
 export const GamificationProvider = ({children}: {children: React.ReactNode}) => {
   const [state, setState] = useState<GamificationState>(loadState);
+  const prevUnlockedRef = useRef<Set<string>>(new Set(Object.keys(state.unlockedAchievements)));
 
   useEffect(() => {
     saveState(state);
   }, [state]);
+
+  // Detect newly unlocked achievements and fire toast + confetti
+  useEffect(() => {
+    const currentIds = Object.keys(state.unlockedAchievements);
+    const prev = prevUnlockedRef.current;
+
+    for (const id of currentIds) {
+      if (!prev.has(id)) {
+        const achievement = ACHIEVEMENTS.find((a) => a.id === id);
+        if (achievement) {
+          showAchievementToast(achievement);
+
+          if (id === 'vampireMode') {
+            fireBatConfetti();
+          } else {
+            fireConfetti();
+          }
+        }
+      }
+    }
+
+    prevUnlockedRef.current = new Set(currentIds);
+  }, [state.unlockedAchievements]);
 
   const isUnlocked = useCallback(
     (id: AchievementId) => id in state.unlockedAchievements,
@@ -95,14 +123,42 @@ export const GamificationProvider = ({children}: {children: React.ReactNode}) =>
   const trackProjectView = useCallback((projectId: string) => {
     setState((prev) => {
       if (prev.viewedProjects.includes(projectId)) return prev;
-      return {...prev, viewedProjects: [...prev.viewedProjects, projectId]};
+      const viewedProjects = [...prev.viewedProjects, projectId];
+      const next = {...prev, viewedProjects};
+
+      // Auto-unlock completionist if all projects viewed
+      if (
+        !('completionist' in prev.unlockedAchievements) &&
+        PROJECTS.every((p) => viewedProjects.includes(p.id))
+      ) {
+        next.unlockedAchievements = {
+          ...next.unlockedAchievements,
+          completionist: Date.now(),
+        };
+      }
+
+      return next;
     });
   }, []);
 
   const trackComponentView = useCallback((componentId: string) => {
     setState((prev) => {
       if (prev.viewedComponents.includes(componentId)) return prev;
-      return {...prev, viewedComponents: [...prev.viewedComponents, componentId]};
+      const viewedComponents = [...prev.viewedComponents, componentId];
+      const next = {...prev, viewedComponents};
+
+      // Auto-unlock gottaCatchEmAll if all components viewed
+      if (
+        !('gottaCatchEmAll' in prev.unlockedAchievements) &&
+        COMPONENTS.every((c) => viewedComponents.includes(c.id))
+      ) {
+        next.unlockedAchievements = {
+          ...next.unlockedAchievements,
+          gottaCatchEmAll: Date.now(),
+        };
+      }
+
+      return next;
     });
   }, []);
 
