@@ -1,6 +1,6 @@
-import {faLightbulb} from '@fortawesome/free-solid-svg-icons';
+import {faCode, faLightbulb} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {useEffect, useRef, useState} from 'react';
+import {useEffect, useMemo, useRef, useState} from 'react';
 import {twJoin} from 'tailwind-merge';
 
 import {SectionDivider} from '@/components/common/SectionDivider';
@@ -9,10 +9,13 @@ import {
   SpacingSection,
   TypographySection,
 } from '@/components/playground/DesignTokens';
+import {Button} from '@/components/ui/button';
+import {CodeBlock} from '@/components/ui/codeBlock';
 import {COMPONENTS, type ComponentShowcase, type ComponentStory} from '@/data/components';
 import {DESIGN_TOKEN_SECTIONS} from '@/data/designTokens';
 import {useGamification} from '@/hooks/useGamification';
 import {useTheme} from '@/hooks/useTheme';
+import {extractStorySource} from '@/utils/storySource';
 
 const STORYBOOK_URL = import.meta.env.DEV ? 'http://localhost:6006' : '/storybook';
 
@@ -21,26 +24,54 @@ const getStoryUrl = (componentId: string, storyId: string, theme: string) =>
 
 const StoryEmbed = ({
   componentId,
+  source,
   story,
   theme,
 }: {
   componentId: string;
+  source: string;
   story: ComponentStory;
   theme: string;
-}) => (
-  <div className="space-y-2">
-    <h4 className="text-base font-medium text-muted-foreground">{story.name}</h4>
-    <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
-      <iframe
-        className="w-full"
-        loading="lazy"
-        src={getStoryUrl(componentId, story.id, theme)}
-        style={{height: story.height ?? 200}}
-        title={`${componentId} - ${story.name}`}
-      />
+}) => {
+  const [showSource, setShowSource] = useState(false);
+  const storyCode = useMemo(
+    () => extractStorySource(source, story.storyExport),
+    [source, story.storyExport]
+  );
+
+  return (
+    <div className="space-y-2">
+      <h4 className="text-base font-medium text-muted-foreground">{story.name}</h4>
+      <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
+        <iframe
+          className="w-full"
+          loading="lazy"
+          src={getStoryUrl(componentId, story.id, theme)}
+          style={{height: story.height ?? 200}}
+          title={`${componentId} - ${story.name}`}
+        />
+      </div>
+      {storyCode && (
+        <div className="space-y-2">
+          <Button
+            aria-expanded={showSource}
+            onClick={() => setShowSource(!showSource)}
+            size="sm"
+            variant="outline"
+          >
+            <FontAwesomeIcon icon={faCode} />
+            {showSource ? 'Hide Source' : 'View Source'}
+          </Button>
+          {showSource && (
+            <div className="overflow-hidden rounded-xl border border-border">
+              <CodeBlock code={storyCode} />
+            </div>
+          )}
+        </div>
+      )}
     </div>
-  </div>
-);
+  );
+};
 
 const ComponentSection = ({component, theme}: {component: ComponentShowcase; theme: string}) => (
   <section className="scroll-mt-24 space-y-6" id={component.id}>
@@ -71,9 +102,15 @@ const ComponentSection = ({component, theme}: {component: ComponentShowcase; the
       </div>
     </div>
 
-    <div className="space-y-4">
+    <div className="space-y-6">
       {component.stories.map((story) => (
-        <StoryEmbed componentId={component.id} key={story.id} story={story} theme={theme} />
+        <StoryEmbed
+          componentId={component.id}
+          key={story.id}
+          source={component.source}
+          story={story}
+          theme={theme}
+        />
       ))}
     </div>
   </section>

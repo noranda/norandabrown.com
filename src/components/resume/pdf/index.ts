@@ -1,0 +1,1 @@
+export {ResumePdf} from './ResumePdf';

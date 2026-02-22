@@ -1,4 +1,5 @@
 export {Button, buttonVariants} from './button';
+export {CodeBlock} from './codeBlock';
 export {Command} from './command';
 export {Dialog} from './dialog';
 export {Popover} from './popover';

@@ -31,7 +31,7 @@ export const PROJECTS: Project[] = [
   {
     company: 'ezCater',
     description:
-      'Built a flexible, atomic design system from scratch on Tailwind CSS to replace a rigid CSS-in-JS component library. Adopted by all frontend teams across multiple applications.',
+      'Built a flexible, atomic design system component library from scratch on Tailwind CSS to replace a rigid CSS-in-JS component library. Adopted by all frontend teams across multiple applications.',
     icon: faShapes,
     id: 'design-system-architecture',
     role: 'Senior Frontend Engineer',

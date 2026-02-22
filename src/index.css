@@ -179,6 +179,19 @@
   --success-muted: oklch(0.266 0.065 152.934 / 30%);
 }
 
+/* ── Shiki dual-theme support ── */
+.shiki-wrapper .shiki,
+.shiki-wrapper .shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark .shiki-wrapper .shiki,
+.dark .shiki-wrapper .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
 @layer base {
   html {
     @apply scroll-smooth;
