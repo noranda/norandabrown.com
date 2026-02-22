@@ -179,6 +179,51 @@
   --success-muted: oklch(0.266 0.065 152.934 / 30%);
 }
 
+/* ── Solar System: starfield twinkle ── */
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ── Solar System: planet glow pulse ── */
+@keyframes planet-glow {
+  0%,
+  100% {
+    box-shadow: 0 0 12px 4px var(--planet-glow);
+  }
+  50% {
+    box-shadow: 0 0 20px 8px var(--planet-glow);
+  }
+}
+
+/* ── Solar System: sun corona rays rotation ── */
+@keyframes sun-corona-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── Solar System: sun ambient glow ── */
+@keyframes sun-glow {
+  0%,
+  100% {
+    filter: blur(16px);
+    opacity: 0.4;
+  }
+  50% {
+    filter: blur(24px);
+    opacity: 0.6;
+  }
+}
+
 /* ── Shiki dual-theme support ── */
 .shiki-wrapper .shiki,
 .shiki-wrapper .shiki span {
