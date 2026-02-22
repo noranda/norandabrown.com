@@ -20,7 +20,7 @@ export const FeaturedProjectCard = () => {
       <Link
         aria-label={`View case study: ${project.title}`}
         className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-border bg-card transition-all hover:border-brand/30 hover:shadow-2xl"
-        to={`/work/${project.slug}`}
+        to={`/work#${project.slug}`}
       >
         {/* TODO: Replace with project.coverImage when available */}
         <div className="relative h-48 bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600">

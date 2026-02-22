@@ -38,7 +38,10 @@ export const NotFound = () => {
         </h2>
         <ul className="mt-3 space-y-2">
           {POSSIBLE_CAUSES.map((cause) => (
-            <li className="flex items-start gap-2 text-sm text-brand-accent dark:text-[oklch(0.67_0.249_0.584)]" key={cause}>
+            <li
+              className="flex items-start gap-2 text-sm text-brand-accent dark:text-[oklch(0.67_0.249_0.584)]"
+              key={cause}
+            >
               <span aria-hidden="true" className="mt-0.5 shrink-0 text-brand-accent">
                 &bull;
               </span>

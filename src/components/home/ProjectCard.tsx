@@ -19,7 +19,7 @@ export const ProjectCard = ({animationIndex, project}: ProjectCardProps) => (
     <Link
       aria-label={`View case study: ${project.title}`}
       className="group flex h-full flex-col rounded-3xl border border-border bg-card p-6 transition-all hover:border-brand/30 hover:shadow-xl"
-      to={`/work/${project.slug}`}
+      to={`/work#${project.slug}`}
     >
       <div className="mb-2 text-xs font-medium text-muted-foreground">{project.year}</div>
       <h3 className="mb-2 text-lg font-bold">{project.title}</h3>

@@ -6,7 +6,7 @@ export const useAchievementTriggers = () => {
   const mountTimeRef = useRef(Date.now());
   const keyboardStartRef = useRef<number | null>(null);
 
-  // 4.6.1: Works on My Machine — window resize detection (debounced)
+  // 4.6.1: Works on My Machine - window resize detection (debounced)
   useEffect(() => {
     if (isUnlocked('worksOnMyMachine')) return;
 
@@ -26,7 +26,7 @@ export const useAchievementTriggers = () => {
     };
   }, [isUnlocked, trackResize]);
 
-  // 4.6.2: Inspector Gadget — DevTools detection via window size heuristic
+  // 4.6.2: Inspector Gadget - DevTools detection via window size heuristic
   useEffect(() => {
     if (isUnlocked('inspectorGadget')) return;
 
@@ -46,7 +46,7 @@ export const useAchievementTriggers = () => {
     return () => window.removeEventListener('resize', check);
   }, [isUnlocked, unlockAchievement]);
 
-  // 4.6.5: Tab Master 3000 — keyboard-only navigation for 30+ seconds
+  // 4.6.5: Tab Master 3000 - keyboard-only navigation for 30+ seconds
   useEffect(() => {
     if (isUnlocked('tabMaster')) return;
 
@@ -73,7 +73,7 @@ export const useAchievementTriggers = () => {
     };
   }, [isUnlocked, unlockAchievement]);
 
-  // 4.6.6: The Procrastinator — 10 minutes on site
+  // 4.6.6: The Procrastinator - 10 minutes on site
   useEffect(() => {
     if (isUnlocked('procrastinator')) return;
 

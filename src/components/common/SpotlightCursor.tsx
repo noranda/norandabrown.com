@@ -2,8 +2,7 @@ import {useCallback, useEffect, useRef} from 'react';
 import {useLocation} from 'react-router-dom';
 
 const SPOTLIGHT_THEMES: Record<string, string> = {
-  '/':
-    'radial-gradient(600px circle at var(--spotlight-x) var(--spotlight-y), rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.04) 40%, transparent 70%)',
+  '/': 'radial-gradient(600px circle at var(--spotlight-x) var(--spotlight-y), rgba(102, 126, 234, 0.08), rgba(118, 75, 162, 0.04) 40%, transparent 70%)',
   '/about':
     'radial-gradient(700px circle at var(--spotlight-x) var(--spotlight-y), rgba(147, 130, 220, 0.1), rgba(102, 126, 234, 0.05) 35%, transparent 65%)',
   '/components':

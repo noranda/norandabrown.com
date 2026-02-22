@@ -84,7 +84,7 @@ export const Footer = () => {
               Official Bug Report
             </Dialog.Title>
             <Dialog.Description>
-              Incident #{String(Date.now()).slice(-6)} &mdash; Filed by you, just now
+              Incident #{String(Date.now()).slice(-6)} - Filed by you, just now
             </Dialog.Description>
           </Dialog.Header>
           <div className="space-y-3 text-sm">
@@ -107,8 +107,8 @@ export const Footer = () => {
             <div className="rounded-lg bg-muted p-4">
               <p className="font-medium">Severity</p>
               <p className="mt-1 text-muted-foreground">
-                Critical &mdash; Developer is clearly spending time hiding easter eggs instead of
-                writing unit tests.
+                Critical - Developer is clearly spending time hiding easter eggs instead of writing
+                unit tests.
               </p>
             </div>
           </div>

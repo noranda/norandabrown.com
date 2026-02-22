@@ -7,7 +7,7 @@ export const fireBatConfetti = () => {
 
   const bat = confetti.shapeFromText({scalar: 3, text: '🦇'});
 
-  // Shared flight physics — decay near 1 = constant speed glide
+  // Shared flight physics - decay near 1 = constant speed glide
   const flightBase = {
     decay: 0.998,
     flat: false,
@@ -18,28 +18,98 @@ export const fireBatConfetti = () => {
     ticks: 800,
   };
 
-  // Wave 1 — first scouts from each side
-  confetti({...flightBase, angle: 355, drift: 1.5, origin: {x: -0.1, y: 0.3}, particleCount: 12, spread: 15});
-  confetti({...flightBase, angle: 185, drift: -1.5, origin: {x: 1.1, y: 0.4}, particleCount: 12, spread: 15});
+  // Wave 1 - first scouts from each side
+  confetti({
+    ...flightBase,
+    angle: 355,
+    drift: 1.5,
+    origin: {x: -0.1, y: 0.3},
+    particleCount: 12,
+    spread: 15,
+  });
+  confetti({
+    ...flightBase,
+    angle: 185,
+    drift: -1.5,
+    origin: {x: 1.1, y: 0.4},
+    particleCount: 12,
+    spread: 15,
+  });
 
-  // Wave 2 — main swarm (staggered for flock feel)
+  // Wave 2 - main swarm (staggered for flock feel)
   setTimeout(() => {
-    confetti({...flightBase, angle: 5, drift: 1, origin: {x: -0.1, y: 0.4}, particleCount: 20, spread: 25});
-    confetti({...flightBase, angle: 350, drift: 2, origin: {x: -0.1, y: 0.6}, particleCount: 20, spread: 25});
-    confetti({...flightBase, angle: 175, drift: -1, origin: {x: 1.1, y: 0.5}, particleCount: 20, spread: 25});
-    confetti({...flightBase, angle: 190, drift: -2, origin: {x: 1.1, y: 0.7}, particleCount: 20, spread: 25});
+    confetti({
+      ...flightBase,
+      angle: 5,
+      drift: 1,
+      origin: {x: -0.1, y: 0.4},
+      particleCount: 20,
+      spread: 25,
+    });
+    confetti({
+      ...flightBase,
+      angle: 350,
+      drift: 2,
+      origin: {x: -0.1, y: 0.6},
+      particleCount: 20,
+      spread: 25,
+    });
+    confetti({
+      ...flightBase,
+      angle: 175,
+      drift: -1,
+      origin: {x: 1.1, y: 0.5},
+      particleCount: 20,
+      spread: 25,
+    });
+    confetti({
+      ...flightBase,
+      angle: 190,
+      drift: -2,
+      origin: {x: 1.1, y: 0.7},
+      particleCount: 20,
+      spread: 25,
+    });
   }, 200);
 
-  // Wave 3 — stragglers
+  // Wave 3 - stragglers
   setTimeout(() => {
-    confetti({...flightBase, angle: 0, drift: 2, origin: {x: -0.1, y: 0.5}, particleCount: 15, spread: 20});
-    confetti({...flightBase, angle: 180, drift: -2, origin: {x: 1.1, y: 0.5}, particleCount: 15, spread: 20});
+    confetti({
+      ...flightBase,
+      angle: 0,
+      drift: 2,
+      origin: {x: -0.1, y: 0.5},
+      particleCount: 15,
+      spread: 20,
+    });
+    confetti({
+      ...flightBase,
+      angle: 180,
+      drift: -2,
+      origin: {x: 1.1, y: 0.5},
+      particleCount: 15,
+      spread: 20,
+    });
   }, 500);
 
-  // Wave 4 — last few racing to catch up
+  // Wave 4 - last few racing to catch up
   setTimeout(() => {
-    confetti({...flightBase, angle: 358, drift: 1.5, origin: {x: -0.1, y: 0.45}, particleCount: 10, spread: 15});
-    confetti({...flightBase, angle: 182, drift: -1.5, origin: {x: 1.1, y: 0.55}, particleCount: 10, spread: 15});
+    confetti({
+      ...flightBase,
+      angle: 358,
+      drift: 1.5,
+      origin: {x: -0.1, y: 0.45},
+      particleCount: 10,
+      spread: 15,
+    });
+    confetti({
+      ...flightBase,
+      angle: 182,
+      drift: -1.5,
+      origin: {x: 1.1, y: 0.55},
+      particleCount: 10,
+      spread: 15,
+    });
   }, 750);
 };
 

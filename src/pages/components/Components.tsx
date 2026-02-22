@@ -3,6 +3,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {useEffect, useRef, useState} from 'react';
 import {twJoin} from 'tailwind-merge';
 
+import {SectionDivider} from '@/components/common/SectionDivider';
 import {
   ColorsSection,
   SpacingSection,
@@ -35,7 +36,7 @@ const StoryEmbed = ({
         loading="lazy"
         src={getStoryUrl(componentId, story.id, theme)}
         style={{height: story.height ?? 200}}
-        title={`${componentId} — ${story.name}`}
+        title={`${componentId} - ${story.name}`}
       />
     </div>
   </div>
@@ -124,7 +125,7 @@ export const Components = () => {
   return (
     <div
       className="min-h-screen bg-[radial-gradient(ellipse_at_top_left,_rgba(147,51,234,0.06),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_rgba(249,115,22,0.04),_transparent_50%),radial-gradient(ellipse_at_top_right,_rgba(219,39,119,0.04),_transparent_40%)] dark:bg-[radial-gradient(ellipse_at_top_left,_rgba(147,51,234,0.15),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_rgba(249,115,22,0.1),_transparent_50%),radial-gradient(ellipse_at_top_right,_rgba(219,39,119,0.08),_transparent_40%)] dark:[--muted-foreground:oklch(0.82_0_0)]"
-      data-easter-egg="🧩 You found the component playground — where buttons have variants and selects have opinions"
+      data-easter-egg="🧩 You found the component playground - where buttons have variants and selects have opinions"
     >
       <div className="mx-auto max-w-7xl px-6 py-12">
         {/* Hero */}
@@ -132,13 +133,13 @@ export const Components = () => {
           <h1 className="font-display text-4xl sm:text-5xl">Component Playground</h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
             The building blocks behind this site. Built with React, TypeScript, and an unhealthy
-            amount of attention to detail. Each component is documented in Storybook — poke around,
+            amount of attention to detail. Each component is documented in Storybook - poke around,
             they don't bite.
           </p>
           <div className="flex items-start gap-2 rounded-lg border border-border bg-muted/50 px-4 py-3 text-base text-muted-foreground">
             <FontAwesomeIcon className="mt-0.5 shrink-0 text-brand" icon={faLightbulb} />
             <p className="italic">
-              Inspired by the Tapas Design System I built at work — same principles, different
+              Inspired by the Tapas Design System I built at work - same principles, different
               codebase. shadcn/ui provides the accessible primitives, I provide the opinions.
             </p>
           </div>
@@ -199,11 +200,7 @@ export const Components = () => {
             ))}
 
             {/* Design Token sections */}
-            <div className="flex items-center gap-4 pt-4">
-              <div className="h-px flex-1 bg-border" />
-              <span className="text-base font-medium text-muted-foreground">Design Tokens</span>
-              <div className="h-px flex-1 bg-border" />
-            </div>
+            <SectionDivider label="Design Tokens" />
             <ColorsSection />
             <TypographySection />
             <SpacingSection />

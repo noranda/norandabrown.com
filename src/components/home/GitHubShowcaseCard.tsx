@@ -17,7 +17,7 @@ export const GitHubShowcaseCard = () => {
       variants={fadeUp}
     >
       <a
-        aria-label="View Noranda's GitHub profile — contribution streak and graph"
+        aria-label="View Noranda's GitHub profile - contribution streak and graph"
         className="flex h-full flex-col justify-start rounded-3xl border border-border bg-card p-6 transition-all hover:border-brand/30 hover:shadow-xl"
         href="https://github.com/noranda"
         rel="noopener noreferrer"

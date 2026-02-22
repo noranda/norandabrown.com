@@ -314,7 +314,7 @@ export const COLOR_GROUPS: ColorGroup[] = [
 export const DESIGN_TOKEN_SECTIONS: DesignTokenSection[] = [
   {
     description:
-      'The semantic color system — every shade adapts to light and dark mode automatically.',
+      'The semantic color system - every shade adapts to light and dark mode automatically.',
     icon: faPalette,
     id: 'colors',
     name: 'Colors',
@@ -328,7 +328,7 @@ export const DESIGN_TOKEN_SECTIONS: DesignTokenSection[] = [
   },
   {
     description:
-      'A consistent spacing scale built on 4px increments — the invisible grid that holds everything together.',
+      'A consistent spacing scale built on 4px increments - the invisible grid that holds everything together.',
     icon: faRulerCombined,
     id: 'spacing',
     name: 'Spacing',

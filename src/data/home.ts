@@ -1,4 +1,4 @@
-import {PROJECTS, type Project} from '@/data/projects';
+import {CASE_STUDIES, type Project} from '@/data/projects';
 
 // ── Types ──
 
@@ -21,11 +21,11 @@ export type TechStackItem = {
 
 // ── Featured Projects ──
 
-export const FEATURED_PROJECTS: Project[] = PROJECTS.slice(0, 3);
+export const FEATURED_PROJECTS: Project[] = CASE_STUDIES;
 
 export const FEATURED_PROJECT_STATS: FeaturedProjectStat[] = [
-  {label: 'Teams', value: '20+'},
-  {label: 'Components', value: '35+'},
+  {label: 'Apps', value: '5'},
+  {label: 'Components', value: '18+'},
 ];
 
 // ── Impact Metrics ──

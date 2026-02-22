@@ -1,7 +1,6 @@
 import {useState} from 'react';
 import {Link} from 'react-router-dom';
 import {twJoin} from 'tailwind-merge';
-// import {fireConfetti} from '@/components/gamification/confetti';
 import {DarkModeToggle} from '@/components/common/DarkModeToggle';
 import {Button} from '@/components/ui/button';
 import {Tooltip} from '@/components/ui/tooltip';
@@ -20,7 +19,7 @@ export const Header = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link
-          aria-label="Noranda Brown — Home"
+          aria-label="Noranda Brown - Home"
           className="focus-ring flex items-center gap-3 rounded-lg"
           data-tour="tour-logo"
           to="/"
@@ -48,12 +47,6 @@ export const Header = () => {
           </div>
 
           <Navigation />
-
-          {/* TODO: TEMP — remove after testing confetti
-          <Button onClick={fireConfetti} size="sm" variant="outline">
-            Test Confetti
-          </Button>
-          */}
 
           {/* Exploration Progress */}
           {explorationScore > 0 && (
@@ -131,11 +124,7 @@ export const Header = () => {
           mobileMenuOpen ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'
         )}
       >
-        <nav
-          aria-label="Mobile navigation"
-          className="overflow-hidden"
-          id="mobile-menu"
-        >
+        <nav aria-label="Mobile navigation" className="overflow-hidden" id="mobile-menu">
           <div className="border-t border-border px-6 py-4">
             <Navigation className="flex-col gap-4" onClick={() => setMobileMenuOpen(false)} />
             <div
