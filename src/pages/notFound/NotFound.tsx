@@ -1,5 +1,6 @@
 import {Link} from 'react-router-dom';
 import {toast} from 'sonner';
+import {PageMeta} from '@/components/common/PageMeta';
 import {Button} from '@/components/ui/button';
 
 const POSSIBLE_CAUSES = [
@@ -23,6 +24,7 @@ export const NotFound = () => {
       className="mx-auto max-w-2xl px-6 py-24 text-center"
       data-easter-egg="🔍 You found the 404 page. Achievement unlocked: Getting Lost."
     >
+      <PageMeta description="Page not found." path="/404" title="404" />
       <p className="bg-gradient-to-r from-brand to-brand-accent bg-clip-text text-8xl font-bold tracking-tighter text-transparent">
         404
       </p>

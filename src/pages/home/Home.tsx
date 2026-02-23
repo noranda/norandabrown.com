@@ -1,3 +1,4 @@
+import {PageMeta} from '@/components/common/PageMeta';
 import {
   CareerJourneyCard,
   EasterEggTracker,
@@ -11,6 +12,11 @@ import {ANIMATION_ORDER, FEATURED_PROJECTS} from '@/data/home';
 
 export const Home = () => (
   <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
+    <PageMeta
+      description="Portfolio of Noranda Brown, Senior Frontend Engineer specializing in design systems, visual testing, and accessible React applications."
+      path="/"
+      title="Noranda Brown | Senior Frontend Engineer"
+    />
     {/* ── Bento Grid ── */}
     <div className="grid auto-rows-auto grid-cols-1 gap-4 md:auto-rows-[140px] md:grid-cols-12">
       {/* Row 1-3: Photo + Hero */}

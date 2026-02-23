@@ -1,5 +1,6 @@
 import {useEffect, useRef, useState} from 'react';
 import {useLocation} from 'react-router-dom';
+import {PageMeta} from '@/components/common/PageMeta';
 import {SectionDivider} from '@/components/common/SectionDivider';
 import {
   BugBlaster,
@@ -69,6 +70,11 @@ export const Work = () => {
       className="min-h-screen bg-[radial-gradient(ellipse_at_top_left,_rgba(147,51,234,0.06),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_rgba(249,115,22,0.04),_transparent_50%),radial-gradient(ellipse_at_top_right,_rgba(219,39,119,0.04),_transparent_40%)] dark:bg-[radial-gradient(ellipse_at_top_left,_rgba(147,51,234,0.15),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_rgba(249,115,22,0.1),_transparent_50%),radial-gradient(ellipse_at_top_right,_rgba(219,39,119,0.08),_transparent_40%)] dark:[--muted-foreground:oklch(0.82_0_0)]"
       data-easter-egg="💼 You found the work page - where case studies are told and side quests are logged"
     >
+      <PageMeta
+        description="Case studies and side projects by Noranda Brown. Design system architecture, visual testing strategy, and more."
+        path="/work"
+        title="Work"
+      />
       <div className="mx-auto max-w-7xl px-6 py-12">
         <WorkHero />
 

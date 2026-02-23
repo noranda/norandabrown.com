@@ -10,6 +10,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {motion} from 'framer-motion';
 import {useState} from 'react';
 
+import {PageMeta} from '@/components/common/PageMeta';
 import {SectionDivider} from '@/components/common/SectionDivider';
 import {ResumeSectionHeading, SkillsSection, TimelineCard} from '@/components/resume';
 import {Button} from '@/components/ui/button';
@@ -26,6 +27,11 @@ export const Resume = () => {
       className="min-h-screen bg-[radial-gradient(ellipse_at_top_left,_rgba(147,51,234,0.06),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_rgba(59,130,246,0.04),_transparent_50%)] dark:bg-[radial-gradient(ellipse_at_top_left,_rgba(147,51,234,0.15),_transparent_50%),radial-gradient(ellipse_at_bottom_right,_rgba(59,130,246,0.1),_transparent_50%)]"
       data-easter-egg="📄 You found the resume - where bullet points get the designer treatment"
     >
+      <PageMeta
+        description="Resume of Noranda Brown. 12+ years of frontend engineering, design systems, and visual testing. Download as PDF."
+        path="/resume"
+        title="Resume"
+      />
       <div className="mx-auto max-w-3xl px-6 py-12">
         {/* Hero */}
         <motion.div
