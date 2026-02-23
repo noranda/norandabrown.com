@@ -5,6 +5,7 @@ import {Button} from '@/components/ui/button';
 import {Dialog} from '@/components/ui/dialog';
 import {Tooltip} from '@/components/ui/tooltip';
 import {TOOLTIPS} from '@/data/humorContent';
+import {SITE_CONFIG} from '@/data/siteConfig';
 import {useGamification} from '@/hooks/useGamification';
 
 const githubTooltip = TOOLTIPS.find((t) => t.id === 'github')!.text;
@@ -43,7 +44,7 @@ export const Footer = () => {
             <Tooltip.Trigger asChild>
               <a
                 className="focus-ring rounded-md text-sm text-muted-foreground transition-colors hover:text-foreground"
-                href="https://github.com/noranda"
+                href={SITE_CONFIG.githubUrl}
                 rel="noopener noreferrer"
                 target="_blank"
               >
@@ -60,7 +61,7 @@ export const Footer = () => {
             <Tooltip.Trigger asChild>
               <a
                 className="focus-ring rounded-md text-sm text-muted-foreground transition-colors hover:text-foreground"
-                href="https://linkedin.com/in/norandabrown"
+                href={SITE_CONFIG.linkedinUrl}
                 rel="noopener noreferrer"
                 target="_blank"
               >

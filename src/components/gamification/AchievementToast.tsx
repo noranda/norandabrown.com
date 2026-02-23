@@ -6,7 +6,7 @@ import {type AchievementDefinition} from '@/data/achievements';
 export const showAchievementToast = (achievement: AchievementDefinition) => {
   toast(achievement.name, {
     description: achievement.toast,
-    duration: 5000,
+    duration: 10000,
     icon: <FontAwesomeIcon className="text-warning" icon={faTrophy} />,
   });
 };

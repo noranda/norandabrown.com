@@ -1,7 +1,13 @@
 import {useEffect, useRef, useState} from 'react';
 import {useLocation} from 'react-router-dom';
 import {SectionDivider} from '@/components/common/SectionDivider';
-import {CaseStudySection, SideProjectCard, WorkHero, WorkSidebar} from '@/components/work';
+import {
+  BugBlaster,
+  CaseStudySection,
+  SideProjectCard,
+  WorkHero,
+  WorkSidebar,
+} from '@/components/work';
 import {CASE_STUDIES, PROJECTS, SIDE_PROJECTS} from '@/data/projects';
 import {CASE_STUDY_CONTENT} from '@/data/work';
 import {useGamification} from '@/hooks/useGamification';
@@ -89,6 +95,16 @@ export const Work = () => {
                   project={project}
                 />
               ))}
+            </div>
+
+            <SectionDivider label="Take a Break" />
+
+            {/* Bug Blaster Mini-Game */}
+            <div className="mx-auto max-w-2xl space-y-3">
+              <p className="text-center text-sm text-muted-foreground">
+                You made it this far - reward yourself with a quick bug hunt.
+              </p>
+              <BugBlaster />
             </div>
           </div>
         </div>

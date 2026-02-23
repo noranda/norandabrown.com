@@ -5,6 +5,7 @@ import {DarkModeToggle} from '@/components/common/DarkModeToggle';
 import {Button} from '@/components/ui/button';
 import {Tooltip} from '@/components/ui/tooltip';
 import {useGamification} from '@/hooks/useGamification';
+import {AvailabilityPill} from './AvailabilityPill';
 import {Navigation} from './Navigation';
 
 export const Header = () => {
@@ -36,15 +37,7 @@ export const Header = () => {
         {/* Desktop Nav */}
         <div className="hidden items-center gap-6 lg:flex">
           {/* Availability Badge */}
-          <div
-            aria-label="Currently available for opportunities"
-            className="flex items-center gap-2 rounded-full bg-success-muted px-3 py-1.5 text-sm font-medium text-success-foreground"
-            data-tour="tour-availability"
-            role="status"
-          >
-            <div aria-hidden="true" className="h-2 w-2 rounded-full bg-success" />
-            Available
-          </div>
+          <AvailabilityPill />
 
           <Navigation />
 
@@ -127,13 +120,8 @@ export const Header = () => {
         <nav aria-label="Mobile navigation" className="overflow-hidden" id="mobile-menu">
           <div className="border-t border-border px-6 py-4">
             <Navigation className="flex-col gap-4" onClick={() => setMobileMenuOpen(false)} />
-            <div
-              aria-label="Currently available for opportunities"
-              className="mt-4 flex w-fit items-center gap-2 rounded-full bg-success-muted px-3 py-1.5 text-sm font-medium text-success-foreground"
-              role="status"
-            >
-              <div aria-hidden="true" className="h-2 w-2 rounded-full bg-success" />
-              Available
+            <div className="mt-4">
+              <AvailabilityPill />
             </div>
           </div>
         </nav>
