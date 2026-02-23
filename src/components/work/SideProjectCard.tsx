@@ -35,6 +35,7 @@ export const SideProjectCard = ({index, project}: SideProjectCardProps) => {
             <img
               alt={`Screenshot of ${project.title}`}
               className="h-full w-full object-cover object-top"
+              loading="lazy"
               src={screenshot}
             />
           </div>

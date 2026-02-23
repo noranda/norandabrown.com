@@ -1,7 +1,5 @@
-import {pdf} from '@react-pdf/renderer';
 import {useCallback, useState} from 'react';
 
-import {ResumePdf} from '@/components/resume';
 import {PDF_META} from '@/data/resumePdf';
 import {useGamification} from '@/hooks/useGamification';
 
@@ -12,6 +10,10 @@ export const useDownloadResumePdf = () => {
   const download = useCallback(async () => {
     setDownloading(true);
     try {
+      const [{pdf}, {ResumePdf}] = await Promise.all([
+        import('@react-pdf/renderer'),
+        import('@/components/resume/pdf'),
+      ]);
       const blob = await pdf(<ResumePdf />).toBlob();
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');

@@ -28,6 +28,7 @@ export const IllustrationCircle = () => {
           <img
             alt="Noranda Brown"
             className="photo-default h-[200%] w-full object-cover object-[center_-93px] sm:object-[center_-113px] md:object-[center_-140px]"
+            fetchPriority="high"
             src="/noranda-brown.webp"
           />
           <img

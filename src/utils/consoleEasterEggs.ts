@@ -11,6 +11,7 @@ const GREETING = 'Hi there! Yes, I check the console too.';
 const MESSAGES = [
   'Built with React, TypeScript, Tailwind, and mass amounts of caffeine.',
   'No nodes were harmed in the making of this portfolio.',
+  '0ms Total Blocking Time. Yes, even with the solar system and confetti.',
   "Try toggling dark mode 5 times. You won't regret it. (Or maybe you will.)",
 ];
 

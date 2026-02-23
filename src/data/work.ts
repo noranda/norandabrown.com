@@ -70,7 +70,7 @@ export const CASE_STUDY_CONTENT: CaseStudyContent[] = [
       {label: 'Framework', value: 'React 19'},
       {label: 'Styling', value: 'Tailwind v4'},
       {label: 'AI-Assisted', value: '100%'},
-      {label: 'Accessibility', value: 'WCAG AAA'},
+      {label: 'Lighthouse', value: '87+ (0ms TBT)'},
     ],
     projectId: 'portfolio',
     sections: [
@@ -83,7 +83,7 @@ export const CASE_STUDY_CONTENT: CaseStudyContent[] = [
         title: 'The Approach',
       },
       {
-        body: 'A portfolio that practices what it preaches - accessible, performant, and delightful. The gamification system encourages exploration beyond the usual resume-and-projects format. The AI-assisted workflow demonstrates a forward-thinking approach to engineering that I champion in my day job.',
+        body: 'A portfolio that practices what it preaches - accessible, performant, and delightful. Lighthouse scores 87+ with 0ms Total Blocking Time despite client-side rendering, Framer Motion animations, and an embedded solar system. The gamification system encourages exploration beyond the usual resume-and-projects format. The AI-assisted workflow demonstrates a forward-thinking approach to engineering that I champion in my day job.',
         title: 'The Outcome',
       },
     ],

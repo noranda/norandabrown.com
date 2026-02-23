@@ -1,9 +1,9 @@
 import {type IconDefinition} from '@fortawesome/fontawesome-svg-core';
 import {faCamera, faRocket, faShapes} from '@fortawesome/free-solid-svg-icons';
 
-import eurekaTrackerImg from '@/assets/projects/eureka-tracker.png';
-import mandragoraManiaImg from '@/assets/projects/mandragora-mania.png';
-import xivCompleteImg from '@/assets/projects/xiv-complete.png';
+import eurekaTrackerImg from '@/assets/projects/eureka-tracker.webp';
+import mandragoraManiaImg from '@/assets/projects/mandragora-mania.webp';
+import xivCompleteImg from '@/assets/projects/xiv-complete.webp';
 
 export type Project = {
   company?: string;

@@ -1,10 +1,11 @@
-import confetti from 'canvas-confetti';
-
 const COLORS = ['#7C3AED', '#E11D48', '#F59E0B', '#10B981', '#8B5CF6', '#EC4899', '#F97316'];
 
-export const fireBatConfetti = () => {
+const loadConfetti = () => import('canvas-confetti').then((m) => m.default);
+
+export const fireBatConfetti = async () => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
+  const confetti = await loadConfetti();
   const bat = confetti.shapeFromText({scalar: 3, text: '🦇'});
 
   // Shared flight physics - decay near 1 = constant speed glide
@@ -113,8 +114,10 @@ export const fireBatConfetti = () => {
   }, 750);
 };
 
-export const fireConfetti = () => {
+export const fireConfetti = async () => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const confetti = await loadConfetti();
 
   // Left cannon
   confetti({
