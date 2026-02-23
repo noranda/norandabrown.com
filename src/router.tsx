@@ -10,8 +10,16 @@ const Resume = lazy(() => import('./pages/resume'));
 const Work = lazy(() => import('./pages/work'));
 
 const Loading = () => (
-  <div className="flex min-h-screen items-center justify-center">
-    <p className="text-muted-foreground">Loading...</p>
+  <div className="flex min-h-screen items-center justify-center" role="status">
+    <div
+      aria-label="Loading page"
+      className="h-10 w-10 animate-spin rounded-full bg-[conic-gradient(from_0deg,_var(--color-brand),_var(--color-brand-accent),_transparent)]"
+      style={{
+        mask: 'radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px))',
+        WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px))',
+      }}
+    />
+    <span className="sr-only">Loading...</span>
   </div>
 );
 

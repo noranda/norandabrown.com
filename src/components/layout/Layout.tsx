@@ -1,5 +1,5 @@
-import {useEffect} from 'react';
-import {Outlet} from 'react-router-dom';
+import {useEffect, useLayoutEffect} from 'react';
+import {Outlet, useLocation} from 'react-router-dom';
 import {SpotlightCursor} from '@/components/common/SpotlightCursor';
 import {ProgressTracker} from '@/components/gamification/ProgressTracker';
 import {ProductTour} from '@/components/onboarding/ProductTour';
@@ -12,8 +12,15 @@ import {Header} from './Header';
 import {RouteAnnouncer} from './RouteAnnouncer';
 
 export const Layout = () => {
+  const {pathname} = useLocation();
+
   useAchievementTriggers();
   usePageTracking();
+
+  // Scroll to top on route change before paint (skip hash navigation)
+  useLayoutEffect(() => {
+    window.scrollTo({behavior: 'instant', top: 0});
+  }, [pathname]);
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
