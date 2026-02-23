@@ -2,6 +2,7 @@ import {faGlobe} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {motion} from 'framer-motion';
 import {ACHIEVEMENTS} from '@/data/achievements';
+import {ANIMATION_ORDER} from '@/data/home';
 import {useGamification} from '@/hooks/useGamification';
 import {fadeUp} from '@/utils/animations';
 
@@ -14,7 +15,7 @@ export const EasterEggTracker = () => {
     <motion.div
       animate="visible"
       className="col-span-1 md:col-span-12"
-      custom={8}
+      custom={ANIMATION_ORDER.easterEggTracker}
       initial="hidden"
       variants={fadeUp}
     >
@@ -24,7 +25,7 @@ export const EasterEggTracker = () => {
             <FontAwesomeIcon aria-hidden="true" className="text-2xl" icon={faGlobe} />
             <div>
               <div className="font-bold">Hidden Features Unlocked</div>
-              <div className="text-sm opacity-90">
+              <div className="opacity-90">
                 Explore the site to discover easter eggs and unlock achievements
               </div>
             </div>
@@ -39,9 +40,7 @@ export const EasterEggTracker = () => {
               <div className="text-xs opacity-75">Found</div>
             </div>
             {explorationScore < 100 && (
-              <div className="text-sm opacity-90">
-                Find all {totalAchievements} to unlock a surprise!
-              </div>
+              <div className="opacity-90">Find all {totalAchievements} to unlock a surprise!</div>
             )}
           </div>
         </div>

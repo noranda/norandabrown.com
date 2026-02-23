@@ -2,6 +2,7 @@ import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {motion} from 'framer-motion';
 import {Button} from '@/components/ui/button';
+import {ANIMATION_ORDER} from '@/data/home';
 import {useTheme} from '@/hooks/useTheme';
 import {fadeUp} from '@/utils/animations';
 
@@ -12,7 +13,7 @@ export const GitHubShowcaseCard = () => {
     <motion.div
       animate="visible"
       className="col-span-1 row-span-1 md:col-span-12 md:row-span-3 lg:row-span-2"
-      custom={1}
+      custom={ANIMATION_ORDER.gitHubShowcase}
       initial="hidden"
       variants={fadeUp}
     >

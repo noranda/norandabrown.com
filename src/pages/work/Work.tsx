@@ -48,7 +48,7 @@ export const Work = () => {
     sections.forEach((el) => observer.observe(el!));
 
     return () => observer.disconnect();
-  }, []);
+  }, [trackProjectView]);
 
   // Scroll to hash target on mount (from home page links like /work#design-system-architecture)
   useEffect(() => {

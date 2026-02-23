@@ -1,9 +1,10 @@
-import {useEffect, useRef} from 'react';
+import {useEffect, useRef, useState} from 'react';
 import {useGamification} from './useGamification';
 
 export const useAchievementTriggers = () => {
   const {isUnlocked, trackResize, unlockAchievement} = useGamification();
-  const mountTimeRef = useRef(Date.now());
+  const [mountTime] = useState(() => Date.now());
+  const mountTimeRef = useRef(mountTime);
   const keyboardStartRef = useRef<number | null>(null);
 
   // 4.6.1: Works on My Machine - window resize detection (debounced)

@@ -14,6 +14,7 @@ const linkedinTooltip = TOOLTIPS.find((t) => t.id === 'linkedin')!.text;
 export const Footer = () => {
   const {unlockAchievement} = useGamification();
   const [bugModalOpen, setBugModalOpen] = useState(false);
+  const [incidentId] = useState(() => String(Date.now()).slice(-6));
   const year = new Date().getFullYear();
 
   const handleBugClick = () => {
@@ -84,9 +85,7 @@ export const Footer = () => {
               <FontAwesomeIcon className="text-brand-accent" icon={faBug} />
               Official Bug Report
             </Dialog.Title>
-            <Dialog.Description>
-              Incident #{String(Date.now()).slice(-6)} - Filed by you, just now
-            </Dialog.Description>
+            <Dialog.Description>Incident #{incidentId} - Filed by you, just now</Dialog.Description>
           </Dialog.Header>
           <div className="space-y-3 text-sm">
             <div className="rounded-lg bg-muted p-4">

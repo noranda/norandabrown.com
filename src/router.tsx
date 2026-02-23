@@ -16,7 +16,8 @@ const Loading = () => (
       className="h-10 w-10 animate-spin rounded-full bg-[conic-gradient(from_0deg,_var(--color-brand),_var(--color-brand-accent),_transparent)]"
       style={{
         mask: 'radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px))',
-        WebkitMask: 'radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px))',
+        WebkitMask:
+          'radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px))',
       }}
     />
     <span className="sr-only">Loading...</span>

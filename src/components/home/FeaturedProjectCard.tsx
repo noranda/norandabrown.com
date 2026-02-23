@@ -3,7 +3,7 @@ import {faArrowRight} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {motion} from 'framer-motion';
 import {Button} from '@/components/ui/button';
-import {FEATURED_PROJECTS, FEATURED_PROJECT_STATS} from '@/data/home';
+import {ANIMATION_ORDER, FEATURED_PROJECTS, FEATURED_PROJECT_STATS} from '@/data/home';
 import {fadeUp} from '@/utils/animations';
 
 export const FeaturedProjectCard = () => {
@@ -13,7 +13,7 @@ export const FeaturedProjectCard = () => {
     <motion.div
       animate="visible"
       className="col-span-1 row-span-1 md:col-span-5 md:row-span-3"
-      custom={2}
+      custom={ANIMATION_ORDER.featuredProject}
       initial="hidden"
       variants={fadeUp}
     >
@@ -22,16 +22,19 @@ export const FeaturedProjectCard = () => {
         className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-border bg-card transition-all hover:border-brand/30 hover:shadow-2xl"
         to={`/work#${project.slug}`}
       >
-        {/* TODO: Replace with project.coverImage when available */}
-        <div className="relative h-48 bg-gradient-to-br from-cyan-400 via-blue-500 to-indigo-600">
-          <div className="absolute top-4 right-4 flex items-center gap-2 rounded-lg bg-white/90 px-3 py-1.5 text-sm font-medium backdrop-blur-sm dark:bg-card/90">
-            <div className="h-2 w-2 animate-pulse rounded-full bg-success" />
-            <span>Live Project</span>
+        <div className="relative h-48 bg-gradient-to-br from-brand via-brand-accent to-brand-warm">
+          <div className="absolute top-4 right-4 flex items-center gap-2">
+            <span className="rounded-lg bg-white/90 px-3 py-1.5 font-medium backdrop-blur-sm dark:bg-card/90">
+              Featured
+            </span>
+            <span className="rounded-lg bg-white/90 px-3 py-1.5 font-medium backdrop-blur-sm dark:bg-card/90">
+              {project.company}
+            </span>
           </div>
         </div>
         <div className="flex flex-1 flex-col p-6">
           <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
-          <p className="mb-4 text-sm text-muted-foreground">{project.description}</p>
+          <p className="mb-4 text-muted-foreground">{project.description}</p>
           <div className="mb-4 grid grid-cols-2 gap-3 border-b border-border pb-4">
             {FEATURED_PROJECT_STATS.map((stat) => (
               <div key={stat.label}>
@@ -51,7 +54,8 @@ export const FeaturedProjectCard = () => {
             ))}
           </div>
           <Button
-            className="mt-auto h-auto gap-2 p-0 text-sm font-medium text-brand"
+            className="mt-auto gap-2 self-start font-medium text-brand"
+            size="none"
             variant="link"
           >
             View Case Study

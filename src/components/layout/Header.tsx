@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useLocation} from 'react-router-dom';
 import {twJoin} from 'tailwind-merge';
 import {DarkModeToggle} from '@/components/common/DarkModeToggle';
 import {Button} from '@/components/ui/button';
@@ -10,7 +10,9 @@ import {Navigation} from './Navigation';
 
 export const Header = () => {
   const {explorationScore} = useGamification();
+  const {pathname} = useLocation();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const isHome = pathname === '/';
 
   return (
     <header
@@ -25,8 +27,13 @@ export const Header = () => {
           data-tour="tour-logo"
           to="/"
         >
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-brand-accent">
-            <span className="font-bold text-brand-foreground">NB</span>
+          <div
+            aria-hidden="true"
+            className={twJoin('rounded-lg p-[2px]', isHome ? 'logo-border-spin' : 'bg-transparent')}
+          >
+            <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-brand-accent">
+              <span className="font-bold text-brand-foreground">NB</span>
+            </div>
           </div>
           <div>
             <div className="font-bold">Noranda Brown</div>

@@ -1,13 +1,13 @@
 import {
+  CareerJourneyCard,
   EasterEggTracker,
   FeaturedProjectCard,
   GitHubShowcaseCard,
   HeroSection,
   ImpactMetricsCard,
   ProjectCard,
-  TechStackCard,
 } from '@/components/home';
-import {FEATURED_PROJECTS} from '@/data/home';
+import {ANIMATION_ORDER, FEATURED_PROJECTS} from '@/data/home';
 
 export const Home = () => (
   <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6">
@@ -16,18 +16,16 @@ export const Home = () => (
       {/* Row 1-3: Photo + Hero */}
       <HeroSection />
 
-      {/* Row 4-5: GitHub (full width) */}
-      <GitHubShowcaseCard />
-
-      {/* Row 6-8: Featured Project + Tech Stack + Impact Metrics */}
+      {/* Row 4-6: Featured Project + Impact Metrics */}
       <FeaturedProjectCard />
-      <TechStackCard />
       <ImpactMetricsCard />
 
-      {/* Row 9-10: More Projects */}
-      {FEATURED_PROJECTS.slice(1).map((project, i) => (
-        <ProjectCard animationIndex={5 + i} key={project.id} project={project} />
-      ))}
+      {/* Row 7-8: Visual Testing + Career Journey */}
+      <ProjectCard animationIndex={ANIMATION_ORDER.project} project={FEATURED_PROJECTS[1]} />
+      <CareerJourneyCard />
+
+      {/* Row 9-10: GitHub (full width) */}
+      <GitHubShowcaseCard />
 
       {/* Bottom: Easter Egg Tracker */}
       <EasterEggTracker />

@@ -1,4 +1,8 @@
-import {faArrowUpRightFromSquare, faChevronDown, faWandMagicSparkles} from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowUpRightFromSquare,
+  faChevronDown,
+  faWandMagicSparkles,
+} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useState} from 'react';

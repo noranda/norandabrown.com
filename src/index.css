@@ -259,6 +259,18 @@
   }
 }
 
+/* ── Logo: Animated spinning border ── */
+.logo-border-spin {
+  background: conic-gradient(
+    from var(--ring-angle, 0deg),
+    var(--brand),
+    var(--brand-accent),
+    var(--brand-warm),
+    var(--brand)
+  );
+  animation: spin-ring 4s linear infinite;
+}
+
 /* ── Photo Circle: Animated Ring ── */
 @property --ring-angle {
   syntax: '<angle>';

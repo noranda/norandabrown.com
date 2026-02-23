@@ -3,6 +3,7 @@ import {faGithub} from '@fortawesome/free-brands-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {motion} from 'framer-motion';
 import {Button} from '@/components/ui/button';
+import {ANIMATION_ORDER} from '@/data/home';
 import {fadeUp} from '@/utils/animations';
 import {IllustrationCircle} from './IllustrationCircle';
 
@@ -10,6 +11,7 @@ export const HeroSection = () => (
   <motion.div
     animate="visible"
     className="col-span-1 flex flex-col items-center gap-6 md:col-span-12 md:row-span-3 md:flex-row md:items-stretch lg:row-span-3"
+    custom={ANIMATION_ORDER.hero}
     initial="hidden"
     variants={fadeUp}
   >
@@ -25,9 +27,8 @@ export const HeroSection = () => (
           Building delightful web experiences
         </h1>
         <p className="mb-6 text-lg text-white">
-          12+ years crafting accessible, performant React applications.
-          <br />
-          Let&apos;s build something delightful together.
+          12+ years building design systems, championing visual testing, and crafting accessible
+          React applications.
         </p>
       </div>
 

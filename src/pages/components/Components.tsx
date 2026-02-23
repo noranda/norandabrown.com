@@ -153,7 +153,7 @@ export const Components = () => {
     sections.forEach((el) => observer.observe(el!));
 
     return () => observer.disconnect();
-  }, []);
+  }, [trackComponentView]);
 
   const scrollTo = (id: string) => {
     document.getElementById(id)?.scrollIntoView({behavior: 'smooth'});

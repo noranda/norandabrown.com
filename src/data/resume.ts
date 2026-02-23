@@ -48,7 +48,7 @@ export const RESUME: ResumeData = {
       gpa: 3.9,
       id: 'brandeis',
       reality:
-        'Speedran a master\'s degree in one year while simultaneously working as a web developer on campus. Slept occasionally.',
+        "Speedran a master's degree in one year while simultaneously working as a web developer on campus. Slept occasionally.",
       school: 'Brandeis University',
       startYear: 2013,
     },
@@ -152,7 +152,16 @@ export const RESUME: ResumeData = {
     {
       highlighted: ['Chromatic', 'Storybook'],
       name: 'Testing & Tools',
-      skills: ['Chromatic', 'Claude Code', 'Copilot', 'Cursor', 'Git', 'Glean', 'Jest', 'Storybook'],
+      skills: [
+        'Chromatic',
+        'Claude Code',
+        'Copilot',
+        'Cursor',
+        'Git',
+        'Glean',
+        'Jest',
+        'Storybook',
+      ],
     },
     {
       highlighted: ['Design Systems', 'Visual Testing'],
