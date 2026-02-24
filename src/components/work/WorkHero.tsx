@@ -1,8 +1,16 @@
 import {faLightbulb} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {motion} from 'framer-motion';
+import {fadeUp} from '@/utils/animations';
 
 export const WorkHero = () => (
-  <div className="mb-12 space-y-4">
+  <motion.div
+    animate="visible"
+    className="mb-12 space-y-4"
+    custom={0}
+    initial="hidden"
+    variants={fadeUp}
+  >
     <h1 className="font-display text-4xl sm:text-5xl">Work</h1>
     <p className="max-w-2xl text-lg text-muted-foreground">
       Case studies from my professional work and side projects I build for fun. I focus on design
@@ -16,5 +24,5 @@ export const WorkHero = () => (
         impact rather than the pixels. The side projects, however, are fair game.
       </p>
     </div>
-  </div>
+  </motion.div>
 );

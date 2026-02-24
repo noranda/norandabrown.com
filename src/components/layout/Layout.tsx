@@ -1,5 +1,6 @@
 import {useEffect, useLayoutEffect} from 'react';
 import {Outlet, useLocation} from 'react-router-dom';
+import {motion, MotionConfig} from 'framer-motion';
 import {SpotlightCursor} from '@/components/common/SpotlightCursor';
 import {ProgressTracker} from '@/components/gamification/ProgressTracker';
 import {ProductTour} from '@/components/onboarding/ProductTour';
@@ -34,28 +35,37 @@ export const Layout = () => {
   }, []);
 
   return (
-    <Tooltip.Provider>
-      <div
-        className="flex min-h-screen flex-col"
-        data-easter-egg="🐢 You found the wrapper div. It's turtles all the way down."
-      >
-        <SpotlightCursor />
-        <RouteAnnouncer />
-        <a
-          className="focus-ring sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-foreground focus:px-4 focus:py-2 focus:text-background focus:shadow-lg"
-          href="#main-content"
+    <MotionConfig reducedMotion="user">
+      <Tooltip.Provider>
+        <div
+          className="flex min-h-screen flex-col"
+          data-easter-egg="🐢 You found the wrapper div. It's turtles all the way down."
         >
-          Skip to main content
-        </a>
-        <Header />
-        <main className="flex-1" data-tour="tour-main" id="main-content">
-          <Outlet />
-        </main>
-        <Footer />
-        <Toaster />
-        <ProgressTracker />
-        <ProductTour />
-      </div>
-    </Tooltip.Provider>
+          <SpotlightCursor />
+          <RouteAnnouncer />
+          <a
+            className="focus-ring sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[100] focus:rounded-md focus:bg-foreground focus:px-4 focus:py-2 focus:text-background focus:shadow-lg"
+            href="#main-content"
+          >
+            Skip to main content
+          </a>
+          <Header />
+          <main className="flex-1" data-tour="tour-main" id="main-content">
+            <motion.div
+              animate={{opacity: 1}}
+              initial={{opacity: 0}}
+              key={pathname}
+              transition={{duration: 0.2, ease: 'easeOut'}}
+            >
+              <Outlet />
+            </motion.div>
+          </main>
+          <Footer />
+          <Toaster />
+          <ProgressTracker />
+          <ProductTour />
+        </div>
+      </Tooltip.Provider>
+    </MotionConfig>
   );
 };

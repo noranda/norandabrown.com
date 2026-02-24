@@ -83,10 +83,10 @@ export const Work = () => {
 
           <div className="space-y-16">
             {/* Case Studies */}
-            {CASE_STUDIES.map((project, i) => {
+            {CASE_STUDIES.map((project) => {
               const content = CASE_STUDY_CONTENT.find((c) => c.projectId === project.id);
               return content ? (
-                <CaseStudySection content={content} index={i} key={project.id} project={project} />
+                <CaseStudySection content={content} key={project.id} project={project} />
               ) : null;
             })}
 
@@ -95,11 +95,7 @@ export const Work = () => {
             {/* Side Projects */}
             <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
               {SIDE_PROJECTS.map((project, i) => (
-                <SideProjectCard
-                  index={CASE_STUDIES.length + i}
-                  key={project.id}
-                  project={project}
-                />
+                <SideProjectCard index={i} key={project.id} project={project} />
               ))}
             </div>
 

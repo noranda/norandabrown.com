@@ -6,25 +6,25 @@ import {motion} from 'framer-motion';
 import {Button} from '@/components/ui/button';
 import {type Project} from '@/data/projects';
 import {type CaseStudyContent} from '@/data/work';
-import {fadeUp} from '@/utils/animations';
+import {SCROLL_VIEWPORT, scrollFadeUp} from '@/utils/animations';
 
 import {ProjectIllustration} from './ProjectIllustration';
 
 type CaseStudySectionProps = {
   content: CaseStudyContent;
-  index: number;
   project: Project;
 };
 
-export const CaseStudySection = ({content, index, project}: CaseStudySectionProps) => (
+export const CaseStudySection = ({content, project}: CaseStudySectionProps) => (
   <motion.section
-    animate="visible"
     aria-labelledby={`${project.slug}-title`}
     className="scroll-mt-24 space-y-8"
-    custom={index}
+    custom={0}
     id={project.slug}
     initial="hidden"
-    variants={fadeUp}
+    variants={scrollFadeUp}
+    viewport={SCROLL_VIEWPORT}
+    whileInView="visible"
   >
     {/* Illustration */}
     <ProjectIllustration projectId={project.id} variant="section" />

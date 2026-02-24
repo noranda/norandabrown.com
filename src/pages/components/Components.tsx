@@ -1,5 +1,6 @@
 import {faCode, faLightbulb} from '@fortawesome/free-solid-svg-icons';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {motion} from 'framer-motion';
 import {useEffect, useMemo, useRef, useState} from 'react';
 import {twJoin} from 'tailwind-merge';
 
@@ -16,6 +17,7 @@ import {COMPONENTS, type ComponentShowcase, type ComponentStory} from '@/data/co
 import {DESIGN_TOKEN_SECTIONS} from '@/data/designTokens';
 import {useGamification} from '@/hooks/useGamification';
 import {useTheme} from '@/hooks/useTheme';
+import {SCROLL_VIEWPORT, fadeUp, scrollFadeUp} from '@/utils/animations';
 import {extractStorySource} from '@/utils/storySource';
 
 const STORYBOOK_URL = import.meta.env.DEV ? 'http://localhost:6006' : '/storybook';
@@ -75,7 +77,15 @@ const StoryEmbed = ({
 };
 
 const ComponentSection = ({component, theme}: {component: ComponentShowcase; theme: string}) => (
-  <section className="scroll-mt-24 space-y-6" id={component.id}>
+  <motion.section
+    className="scroll-mt-24 space-y-6"
+    custom={0}
+    id={component.id}
+    initial="hidden"
+    variants={scrollFadeUp}
+    viewport={SCROLL_VIEWPORT}
+    whileInView="visible"
+  >
     <div className="space-y-4">
       <div className="flex items-center gap-3">
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-brand-accent text-brand-foreground">
@@ -114,7 +124,7 @@ const ComponentSection = ({component, theme}: {component: ComponentShowcase; the
         />
       ))}
     </div>
-  </section>
+  </motion.section>
 );
 
 export const Components = () => {
@@ -172,7 +182,13 @@ export const Components = () => {
       />
       <div className="mx-auto max-w-7xl px-6 py-12">
         {/* Hero */}
-        <div className="mb-12 space-y-4">
+        <motion.div
+          animate="visible"
+          className="mb-12 space-y-4"
+          custom={0}
+          initial="hidden"
+          variants={fadeUp}
+        >
           <h1 className="font-display text-4xl sm:text-5xl">Component Playground</h1>
           <p className="max-w-2xl text-lg text-muted-foreground">
             The building blocks behind this site. Built with React, TypeScript, and an unhealthy
@@ -186,7 +202,7 @@ export const Components = () => {
               codebase. shadcn/ui provides the accessible primitives, I provide the opinions.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Sidebar + Content */}
         <div className="grid gap-12 lg:grid-cols-[200px_1fr]">

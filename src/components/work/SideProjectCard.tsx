@@ -5,7 +5,7 @@ import {motion} from 'framer-motion';
 import {Button} from '@/components/ui/button';
 import {ILLUSTRATION_CONFIGS} from '@/data/projectIllustrations';
 import {type Project} from '@/data/projects';
-import {fadeUp} from '@/utils/animations';
+import {SCROLL_VIEWPORT, scrollFadeUp} from '@/utils/animations';
 
 type SideProjectCardProps = {
   index: number;
@@ -17,7 +17,13 @@ export const SideProjectCard = ({index, project}: SideProjectCardProps) => {
   const screenshot = project.coverImage;
 
   return (
-    <motion.div animate="visible" custom={index} initial="hidden" variants={fadeUp}>
+    <motion.div
+      custom={index}
+      initial="hidden"
+      variants={scrollFadeUp}
+      viewport={SCROLL_VIEWPORT}
+      whileInView="visible"
+    >
       <div
         className="flex h-full flex-col overflow-hidden rounded-3xl border border-border bg-card transition-all hover:shadow-xl"
         id={project.slug}
