@@ -2,6 +2,7 @@ import {useState} from 'react';
 import {Link, useLocation} from 'react-router-dom';
 import {twJoin} from 'tailwind-merge';
 import {DarkModeToggle} from '@/components/common/DarkModeToggle';
+import {VoidModeToggle} from '@/components/common/VoidModeToggle';
 import {Button} from '@/components/ui/button';
 import {Tooltip} from '@/components/ui/tooltip';
 import {useGamification} from '@/hooks/useGamification';
@@ -80,11 +81,13 @@ export const Header = () => {
 
           {/* Dark Mode Toggle */}
           <DarkModeToggle showTooltip />
+          <VoidModeToggle showTooltip />
         </div>
 
         {/* Mobile Menu Button */}
         <div className="flex items-center gap-3 lg:hidden">
           <DarkModeToggle />
+          <VoidModeToggle />
           <Button
             aria-controls="mobile-menu"
             aria-expanded={mobileMenuOpen}

@@ -13,9 +13,24 @@ const positionElements = (
   tooltipRef: React.RefObject<HTMLDivElement | null>
 ) => {
   const tourStep = TOUR_STEPS[step];
-  const target = document.querySelector(`[data-tour="${tourStep.target}"]`);
 
-  if (!target || !maskRectRef.current || !ringRef.current || !tooltipRef.current) return;
+  if (!maskRectRef.current || !ringRef.current || !tooltipRef.current) return;
+
+  // Centered steps: no spotlight, tooltip centered in viewport
+  if (tourStep.centered) {
+    maskRectRef.current.setAttribute('width', '0');
+    maskRectRef.current.setAttribute('height', '0');
+    ringRef.current.style.width = '0';
+    ringRef.current.style.height = '0';
+
+    const tooltipRect = tooltipRef.current.getBoundingClientRect();
+    tooltipRef.current.style.top = `${(window.innerHeight - tooltipRect.height) / 2}px`;
+    tooltipRef.current.style.left = `${(window.innerWidth - tooltipRect.width) / 2}px`;
+    return;
+  }
+
+  const target = document.querySelector(`[data-tour="${tourStep.target}"]`);
+  if (!target) return;
 
   const rect = target.getBoundingClientRect();
   const spotLeft = rect.left - SPOTLIGHT_PADDING;

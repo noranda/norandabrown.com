@@ -28,7 +28,6 @@ export const BugBlaster = () => {
     stopGame,
     timeLeft,
   } = useBugBlasterGame();
-
   return (
     <div
       className="relative overflow-hidden rounded-xl border border-border bg-card"

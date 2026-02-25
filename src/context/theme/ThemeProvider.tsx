@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react';
+import {useCallback, useEffect, useState} from 'react';
 import {ThemeContext, type Theme} from './themeContext';
 
 export type {Theme, ThemeContextType} from './themeContext';
@@ -27,9 +27,14 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
     }
   }, [theme]);
 
+  const [isVoidMode, setIsVoidMode] = useState(false);
+
   const setTheme = (newTheme: Theme) => {
     setThemeState(newTheme);
     localStorage.setItem('theme', newTheme);
+    if (newTheme === 'light') {
+      setIsVoidMode(false);
+    }
   };
 
   const toggleTheme = () => {
@@ -37,7 +42,13 @@ export const ThemeProvider = ({children}: {children: React.ReactNode}) => {
     setTheme(newTheme);
   };
 
+  const toggleVoidMode = useCallback(() => {
+    setIsVoidMode((prev) => !prev);
+  }, []);
+
   return (
-    <ThemeContext.Provider value={{setTheme, theme, toggleTheme}}>{children}</ThemeContext.Provider>
+    <ThemeContext.Provider value={{isVoidMode, setTheme, theme, toggleTheme, toggleVoidMode}}>
+      {children}
+    </ThemeContext.Provider>
   );
 };

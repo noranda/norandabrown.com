@@ -27,37 +27,17 @@ export const useAchievementTriggers = () => {
     };
   }, [isUnlocked, trackResize]);
 
-  // 4.6.2: Inspector Gadget - DevTools detection via window size heuristic
-  useEffect(() => {
-    if (isUnlocked('inspectorGadget')) return;
-
-    const threshold = 160;
-
-    const check = () => {
-      const widthDiff = window.outerWidth - window.innerWidth > threshold;
-      const heightDiff = window.outerHeight - window.innerHeight > threshold;
-
-      if (widthDiff || heightDiff) {
-        unlockAchievement('inspectorGadget');
-      }
-    };
-
-    check();
-    window.addEventListener('resize', check);
-    return () => window.removeEventListener('resize', check);
-  }, [isUnlocked, unlockAchievement]);
-
-  // 4.6.5: Tab Master 3000 - keyboard-only navigation for 30+ seconds
+  // 4.6.5: Tab Master 3000 - keyboard-only navigation for 10+ seconds
   useEffect(() => {
     if (isUnlocked('tabMaster')) return;
 
+    const NAV_KEYS = new Set(['ArrowDown', 'ArrowUp', 'Enter', 'Escape', 'Space', 'Tab']);
+
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab') {
-        if (keyboardStartRef.current === null) {
-          keyboardStartRef.current = Date.now();
-        } else if (Date.now() - keyboardStartRef.current >= 30_000) {
-          unlockAchievement('tabMaster');
-        }
+      if (!NAV_KEYS.has(e.key)) return;
+
+      if (keyboardStartRef.current === null) {
+        keyboardStartRef.current = Date.now();
       }
     };
 
@@ -65,12 +45,19 @@ export const useAchievementTriggers = () => {
       keyboardStartRef.current = null;
     };
 
+    const interval = setInterval(() => {
+      if (keyboardStartRef.current !== null && Date.now() - keyboardStartRef.current >= 10_000) {
+        unlockAchievement('tabMaster');
+      }
+    }, 2000);
+
     document.addEventListener('keydown', onKeyDown);
     document.addEventListener('mousedown', onMouseDown);
 
     return () => {
       document.removeEventListener('keydown', onKeyDown);
       document.removeEventListener('mousedown', onMouseDown);
+      clearInterval(interval);
     };
   }, [isUnlocked, unlockAchievement]);
 

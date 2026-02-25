@@ -20,7 +20,12 @@ export const AvailabilityPill = () => {
       <Tooltip>
         <Tooltip.Trigger asChild>
           <Button asChild className={PILL_CLASSES} variant="secondary">
-            <a href={SITE_CONFIG.linkedinUrl} rel="noopener noreferrer" target="_blank">
+            <a
+              data-tour="tour-availability"
+              href={SITE_CONFIG.linkedinUrl}
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <FontAwesomeIcon className="text-[10px]" icon={faLinkedin} />
               Open to Connect
               <span className="sr-only"> (opens LinkedIn in new tab)</span>
@@ -44,6 +49,7 @@ export const AvailabilityPill = () => {
               PILL_CLASSES,
               'bg-success-muted text-success-foreground hover:bg-success-muted/80'
             )}
+            data-tour="tour-availability"
             onClick={() => setDialogOpen(true)}
             variant="ghost"
           >

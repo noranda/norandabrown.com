@@ -2,18 +2,21 @@ import {useEffect, useLayoutEffect} from 'react';
 import {Outlet, useLocation} from 'react-router-dom';
 import {motion, MotionConfig} from 'framer-motion';
 import {SpotlightCursor} from '@/components/common/SpotlightCursor';
+import {VoidModeOverlay} from '@/components/common/VoidModeOverlay';
 import {ProgressTracker} from '@/components/gamification/ProgressTracker';
 import {ProductTour} from '@/components/onboarding/ProductTour';
 import {Toaster} from '@/components/ui/toast';
 import {Tooltip} from '@/components/ui/tooltip';
 import {useAchievementTriggers} from '@/hooks/useAchievementTriggers';
 import {usePageTracking} from '@/hooks/usePageTracking';
+import {useTheme} from '@/hooks/useTheme';
 import {Footer} from './Footer';
 import {Header} from './Header';
 import {RouteAnnouncer} from './RouteAnnouncer';
 
 export const Layout = () => {
   const {pathname} = useLocation();
+  const {isVoidMode, toggleVoidMode} = useTheme();
 
   useAchievementTriggers();
   usePageTracking();
@@ -50,7 +53,7 @@ export const Layout = () => {
             Skip to main content
           </a>
           <Header />
-          <main className="flex-1" data-tour="tour-main" id="main-content">
+          <main className="flex-1" id="main-content">
             <motion.div
               animate={{opacity: 1}}
               initial={{opacity: 0}}
@@ -64,6 +67,7 @@ export const Layout = () => {
           <Toaster />
           <ProgressTracker />
           <ProductTour />
+          <VoidModeOverlay isVoidMode={isVoidMode} onExit={toggleVoidMode} />
         </div>
       </Tooltip.Provider>
     </MotionConfig>

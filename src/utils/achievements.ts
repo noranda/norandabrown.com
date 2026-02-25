@@ -1,8 +1,4 @@
-import {
-  ACHIEVEMENTS,
-  type AchievementDefinition,
-  type AchievementId,
-} from '@/context/gamification/gamificationContext';
+import {ACHIEVEMENTS, type AchievementDefinition, type AchievementId} from '@/data/achievements';
 
 export const getAchievementById = (id: AchievementId): AchievementDefinition | undefined =>
   ACHIEVEMENTS.find((a) => a.id === id);

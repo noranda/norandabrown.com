@@ -114,6 +114,98 @@ export const fireBatConfetti = async () => {
   }, 750);
 };
 
+const GOLD_COLORS = ['#FFD700', '#FFC107', '#F59E0B', '#FBBF24', '#7C3AED', '#EC4899'];
+
+export const fireGrandFinale = async () => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  const confetti = await loadConfetti();
+
+  // Phase 1 - Gold cannons from corners
+  confetti({
+    angle: 60,
+    colors: GOLD_COLORS,
+    decay: 0.91,
+    gravity: 0.8,
+    origin: {x: 0, y: 1},
+    particleCount: 150,
+    scalar: 1.4,
+    spread: 80,
+    startVelocity: 60,
+    ticks: 400,
+  });
+  confetti({
+    angle: 120,
+    colors: GOLD_COLORS,
+    decay: 0.91,
+    gravity: 0.8,
+    origin: {x: 1, y: 1},
+    particleCount: 150,
+    scalar: 1.4,
+    spread: 80,
+    startVelocity: 60,
+    ticks: 400,
+  });
+
+  // Phase 2 - Center starburst
+  setTimeout(() => {
+    confetti({
+      colors: GOLD_COLORS,
+      decay: 0.88,
+      gravity: 0.6,
+      origin: {x: 0.5, y: 0.4},
+      particleCount: 100,
+      scalar: 1.2,
+      spread: 360,
+      startVelocity: 45,
+      ticks: 350,
+    });
+  }, 300);
+
+  // Phase 3 - Second wave from corners with brand accent colors
+  setTimeout(() => {
+    confetti({
+      angle: 60,
+      colors: [...GOLD_COLORS, ...COLORS],
+      decay: 0.92,
+      gravity: 1,
+      origin: {x: 0, y: 1},
+      particleCount: 120,
+      scalar: 1.2,
+      spread: 70,
+      startVelocity: 55,
+      ticks: 300,
+    });
+    confetti({
+      angle: 120,
+      colors: [...GOLD_COLORS, ...COLORS],
+      decay: 0.92,
+      gravity: 1,
+      origin: {x: 1, y: 1},
+      particleCount: 120,
+      scalar: 1.2,
+      spread: 70,
+      startVelocity: 55,
+      ticks: 300,
+    });
+  }, 600);
+
+  // Phase 4 - Final shimmer from center (small, slow, floaty)
+  setTimeout(() => {
+    confetti({
+      colors: GOLD_COLORS,
+      decay: 0.95,
+      gravity: 0.4,
+      origin: {x: 0.5, y: 0.3},
+      particleCount: 80,
+      scalar: 0.8,
+      spread: 360,
+      startVelocity: 25,
+      ticks: 500,
+    });
+  }, 900);
+};
+
 export const fireConfetti = async () => {
   if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 

@@ -1,4 +1,7 @@
+import {SITE_CONFIG} from '@/data/siteConfig';
+
 export type TourStep = {
+  centered?: boolean;
   content: string;
   position: 'bottom' | 'left' | 'top';
   target: string;
@@ -21,20 +24,22 @@ export const TOUR_STEPS: TourStep[] = [
     title: 'Navigation',
   },
   {
-    content:
-      "Yes, I'm available. No, I won't fix your printer. But I will make your UI accessible, performant, and unreasonably well-organized.",
+    content: SITE_CONFIG.isAvailable
+      ? "Yes, I'm available. No, I won't fix your printer. But I will make your UI accessible, performant, and unreasonably well-organized."
+      : 'Not actively looking right now, but always open to connecting. Great opportunities have a way of changing my mind.',
     position: 'bottom',
     target: 'tour-availability',
-    title: 'Status: Available',
+    title: SITE_CONFIG.isAvailable ? 'Status: Available' : 'Open to Connect',
   },
   {
     content:
-      "Toggle between 'staring into the void' and 'being blinded by the light.' Both are valid life choices.",
+      "Light mode or dark mode - pick your side. (Spoiler: there's also a secret third option for the truly adventurous.)",
     position: 'bottom',
     target: 'tour-theme',
     title: 'Dark Mode',
   },
   {
+    centered: true,
     content:
       'There are hidden achievements scattered across the site because I believe in rewarding curiosity (and padding my feature list).',
     position: 'bottom',

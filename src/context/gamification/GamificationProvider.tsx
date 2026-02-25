@@ -1,12 +1,12 @@
 import {useCallback, useEffect, useMemo, useRef, useState} from 'react';
 import {showAchievementToast} from '@/components/gamification/AchievementToast';
-import {fireBatConfetti, fireConfetti} from '@/components/gamification/confetti';
+import {fireBatConfetti, fireConfetti, fireGrandFinale} from '@/components/gamification/confetti';
+import {GrandFinaleOverlay} from '@/components/gamification/GrandFinaleOverlay';
+import {ACHIEVEMENTS, MAIN_PAGES} from '@/data/achievements';
 import {COMPONENTS} from '@/data/components';
 import {PROJECTS} from '@/data/projects';
 import {
-  ACHIEVEMENTS,
   GamificationContext,
-  MAIN_PAGES,
   type AchievementId,
   type GamificationState,
 } from './gamificationContext';
@@ -52,6 +52,7 @@ const saveState = (state: GamificationState) => {
 
 export const GamificationProvider = ({children}: {children: React.ReactNode}) => {
   const [state, setState] = useState<GamificationState>(loadState);
+  const [showFinale, setShowFinale] = useState(false);
   const prevUnlockedRef = useRef<Set<string>>(new Set(Object.keys(state.unlockedAchievements)));
 
   useEffect(() => {
@@ -76,6 +77,14 @@ export const GamificationProvider = ({children}: {children: React.ReactNode}) =>
           }
         }
       }
+    }
+
+    // Fire grand finale when all achievements are collected
+    if (currentIds.length === ACHIEVEMENTS.length && currentIds.length > prev.size) {
+      setTimeout(() => {
+        fireGrandFinale();
+        setShowFinale(true);
+      }, 500);
     }
 
     prevUnlockedRef.current = new Set(currentIds);
@@ -226,5 +235,10 @@ export const GamificationProvider = ({children}: {children: React.ReactNode}) =>
     ]
   );
 
-  return <GamificationContext.Provider value={value}>{children}</GamificationContext.Provider>;
+  return (
+    <GamificationContext.Provider value={value}>
+      {children}
+      <GrandFinaleOverlay onComplete={() => setShowFinale(false)} visible={showFinale} />
+    </GamificationContext.Provider>
+  );
 };

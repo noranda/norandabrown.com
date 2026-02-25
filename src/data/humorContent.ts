@@ -38,6 +38,19 @@ export const BUG_BLASTER_FACTS: BugBlasterFact[] = [
   },
 ];
 
+export const VOID_QUIPS: string[] = [
+  'You found the void. It is oddly peaceful here.',
+  'Welcome to production at 2 AM.',
+  "Dark mode wasn't enough for you, was it?",
+  "Shh. The bugs can't find you here.",
+  'If you stare into the void, the void stares back... and judges your code.',
+  'Congratulations, you broke the internet.',
+  'Error 418: I am a teapot. Also, it is dark in here.',
+  'Have you tried turning it off and- oh wait.',
+  'This is what happens when you rm -rf the wrong directory.',
+  'Senior engineer tip: sometimes the best feature is no feature.',
+];
+
 export type TooltipContent = {
   id: string;
   text: string;

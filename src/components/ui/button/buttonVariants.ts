@@ -9,6 +9,8 @@ export const buttonVariants = cva(
         destructive:
           'bg-destructive text-destructive-foreground hover:bg-destructive/90 focus-visible:ring-destructive dark:bg-destructive/60',
         ghost: 'hover:bg-accent hover:text-accent-foreground dark:hover:bg-accent/50',
+        golden:
+          'bg-gradient-to-br from-warning to-brand-warm text-foreground shadow-md hover:from-warning/85 hover:to-brand-warm/85 hover:shadow-lg',
         gradient:
           'bg-gradient-to-br from-brand to-brand-accent text-brand-foreground shadow-md hover:from-brand/85 hover:to-brand-accent/85 hover:shadow-lg',
         link: 'text-primary underline-offset-4 hover:underline',
