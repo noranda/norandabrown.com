@@ -59,12 +59,15 @@ const DialogContent = ({
       >
         {children}
         {showCloseButton && (
-          <DialogPrimitive.Close
-            className="data-[state=open]:bg-accent data-[state=open]:text-muted-foreground absolute top-4 right-4 rounded-xs opacity-70 transition-opacity hover:opacity-100 focus-visible:opacity-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring disabled:pointer-events-none [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-4"
-            data-slot="dialog-close"
-          >
-            <FontAwesomeIcon icon={faXmark} />
-            <span className="sr-only">Close</span>
+          <DialogPrimitive.Close asChild data-slot="dialog-close">
+            <Button
+              aria-label="Close"
+              className="absolute top-4 right-4 opacity-70 hover:opacity-100"
+              size="icon-sm"
+              variant="ghost"
+            >
+              <FontAwesomeIcon icon={faXmark} />
+            </Button>
           </DialogPrimitive.Close>
         )}
       </DialogPrimitive.Content>

@@ -19,9 +19,9 @@ export const SkillsSection = ({skills}: SkillsSectionProps) => (
         key={category.name}
         variants={fadeUp}
       >
-        <h4 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+        <h3 className="mb-3 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
           {category.name}
-        </h4>
+        </h3>
         <div className="flex flex-wrap gap-2">
           {category.skills.map((skill) => {
             const isHighlighted = category.highlighted?.includes(skill);

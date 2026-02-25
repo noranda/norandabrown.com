@@ -44,7 +44,7 @@ const StoryEmbed = ({
 
   return (
     <div className="space-y-2">
-      <h4 className="text-base font-medium text-muted-foreground">{story.name}</h4>
+      <h3 className="text-base font-medium text-muted-foreground">{story.name}</h3>
       <div className="overflow-hidden rounded-xl border border-border bg-card shadow-sm">
         <iframe
           className="w-full"
@@ -91,7 +91,7 @@ const ComponentSection = ({component, theme}: {component: ComponentShowcase; the
         <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-gradient-to-br from-brand to-brand-accent text-brand-foreground">
           <FontAwesomeIcon icon={component.icon} />
         </div>
-        <h3 className="font-display text-2xl">{component.name}</h3>
+        <h2 className="font-display text-2xl">{component.name}</h2>
       </div>
 
       <p className="text-muted-foreground">{component.description}</p>

@@ -16,7 +16,6 @@ export const CareerJourneyCard = () => (
     variants={fadeUp}
   >
     <Link
-      aria-label="View career journey and full resume"
       className="group flex h-full flex-col rounded-3xl border border-border bg-card p-6 transition-all hover:border-brand/30 hover:shadow-xl"
       to="/resume"
     >
@@ -42,7 +41,7 @@ export const CareerJourneyCard = () => (
           </div>
         ))}
       </div>
-      <Button className="mt-4 gap-2 self-start font-medium text-brand" size="none" variant="link">
+      <Button className="mt-4 min-h-6 gap-2 self-start font-medium" size="none" variant="link">
         Full resume
         <FontAwesomeIcon
           className="transition-transform group-hover:translate-x-1"

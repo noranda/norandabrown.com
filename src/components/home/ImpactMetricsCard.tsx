@@ -15,7 +15,7 @@ export const ImpactMetricsCard = () => (
       className="flex h-full flex-col rounded-3xl border border-border bg-card p-6"
     >
       <div className="mb-6 flex items-center justify-between">
-        <h3 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Impact</h3>
+        <h2 className="text-sm font-bold uppercase tracking-wider text-muted-foreground">Impact</h2>
         <span className="rounded-lg bg-secondary px-3 py-1 font-medium">ezCater</span>
       </div>
       <div className="grid flex-1 grid-cols-2 gap-6">

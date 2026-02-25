@@ -22,7 +22,6 @@ export const Header = () => {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
         {/* Logo */}
         <Link
-          aria-label="Noranda Brown - Home"
           className="focus-ring flex items-center gap-3 rounded-lg"
           data-tour="tour-logo"
           to="/"

@@ -76,6 +76,7 @@ export const AvailabilityPill = () => {
               </div>
               <Button
                 aria-label={copied ? 'Email copied' : 'Copy email address'}
+                className="hover:bg-foreground/10 dark:hover:bg-foreground/20"
                 onClick={() => copyToClipboard(SITE_CONFIG.email)}
                 size="sm"
                 variant="ghost"
@@ -91,7 +92,7 @@ export const AvailabilityPill = () => {
             {/* LinkedIn */}
             <Button
               asChild
-              className="flex h-auto items-center justify-start gap-3 rounded-lg bg-muted p-4 text-foreground hover:bg-muted/80"
+              className="flex h-auto items-center justify-start gap-3 rounded-lg bg-muted p-4 text-foreground hover:bg-foreground/10 dark:hover:bg-foreground/20"
               variant="ghost"
             >
               <a href={SITE_CONFIG.linkedinUrl} rel="noopener noreferrer" target="_blank">

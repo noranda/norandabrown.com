@@ -18,22 +18,21 @@ export const FeaturedProjectCard = () => {
       variants={fadeUp}
     >
       <Link
-        aria-label={`View case study: ${project.title}`}
         className="group flex h-full cursor-pointer flex-col overflow-hidden rounded-3xl border border-border bg-card transition-all hover:border-brand/30 hover:shadow-2xl"
         to={`/work#${project.slug}`}
       >
         <div className="relative h-48 bg-gradient-to-br from-brand via-brand-accent to-brand-warm">
           <div className="absolute top-4 right-4 flex items-center gap-2">
-            <span className="rounded-lg bg-white/90 px-3 py-1.5 font-medium backdrop-blur-sm dark:bg-card/90">
+            <span className="rounded-lg bg-brand-foreground/90 px-3 py-1.5 font-medium backdrop-blur-sm dark:bg-card/90">
               Featured
             </span>
-            <span className="rounded-lg bg-white/90 px-3 py-1.5 font-medium backdrop-blur-sm dark:bg-card/90">
+            <span className="rounded-lg bg-brand-foreground/90 px-3 py-1.5 font-medium backdrop-blur-sm dark:bg-card/90">
               {project.company}
             </span>
           </div>
         </div>
         <div className="flex flex-1 flex-col p-6">
-          <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
+          <h2 className="mb-2 text-xl font-bold">{project.title}</h2>
           <p className="mb-4 text-muted-foreground">{project.description}</p>
           <div className="mb-4 grid grid-cols-2 gap-3 border-b border-border pb-4">
             {FEATURED_PROJECT_STATS.map((stat) => (
@@ -54,7 +53,7 @@ export const FeaturedProjectCard = () => {
             ))}
           </div>
           <Button
-            className="mt-auto gap-2 self-start font-medium text-brand"
+            className="mt-auto min-h-6 gap-2 self-start font-medium"
             size="none"
             variant="link"
           >

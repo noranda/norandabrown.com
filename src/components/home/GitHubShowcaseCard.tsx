@@ -18,14 +18,13 @@ export const GitHubShowcaseCard = () => {
       variants={fadeUp}
     >
       <a
-        aria-label="View Noranda's GitHub profile - contribution streak and graph"
         className="flex h-full flex-col justify-start rounded-3xl border border-border bg-card p-6 transition-all hover:border-brand/30 hover:shadow-xl"
         href="https://github.com/noranda"
         rel="noopener noreferrer"
         target="_blank"
       >
         <div className="mb-2 flex items-center justify-between">
-          <h3 className="font-bold">GitHub</h3>
+          <h2 className="font-bold">GitHub</h2>
           <Button asChild size="sm" variant="outline">
             <span>
               <FontAwesomeIcon icon={faGithub} />

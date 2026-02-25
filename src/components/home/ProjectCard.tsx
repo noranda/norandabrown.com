@@ -30,7 +30,7 @@ export const ProjectCard = ({animationIndex, project}: ProjectCardProps) => (
         )}
         <span className="font-medium text-muted-foreground">{project.year}</span>
       </div>
-      <h3 className="mb-2 text-lg font-bold">{project.title}</h3>
+      <h2 className="mb-2 text-lg font-bold">{project.title}</h2>
       <p className="mb-4 text-muted-foreground line-clamp-2">{project.description}</p>
       <div className="mt-auto flex flex-col gap-3">
         <div className="flex flex-wrap gap-2">
@@ -42,19 +42,15 @@ export const ProjectCard = ({animationIndex, project}: ProjectCardProps) => (
         </div>
         <div className="flex items-center gap-4">
           {project.links?.map((link) => (
-            <a
-              className="inline-flex items-center gap-1.5 text-sm font-medium text-brand hover:underline"
-              href={link.url}
-              key={link.url}
-              rel="noopener noreferrer"
-              target="_blank"
-            >
-              {link.label}
-              <span className="sr-only"> (opens in new tab)</span>
-              <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="xs" />
-            </a>
+            <Button asChild className="min-h-6 gap-1.5" key={link.url} size="none" variant="link">
+              <a href={link.url} rel="noopener noreferrer" target="_blank">
+                {link.label}
+                <span className="sr-only"> (opens in new tab)</span>
+                <FontAwesomeIcon icon={faArrowUpRightFromSquare} size="xs" />
+              </a>
+            </Button>
           ))}
-          <Button asChild className="gap-2 font-medium text-brand" size="none" variant="link">
+          <Button asChild className="min-h-6 gap-2 font-medium" size="none" variant="link">
             <Link to={`/work#${project.slug}`}>
               View Case Study
               <span className="sr-only"> for {project.title}</span>
