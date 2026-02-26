@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Core meta -->
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -8,9 +9,32 @@
       name="description"
       content="Portfolio of Noranda Brown, Senior Frontend Engineer specializing in design systems, visual testing, and accessible React applications."
     />
+    <title>Noranda Brown | Senior Frontend Engineer</title>
 
-    <!-- Preload LCP image -->
-    <link rel="preload" as="image" href="/noranda-brown.webp" type="image/webp" />
+    <!-- Open Graph -->
+    <meta
+      property="og:title"
+      content="Noranda Brown | Senior Frontend Engineer"
+    />
+    <meta
+      property="og:description"
+      content="Portfolio of Noranda Brown, Senior Frontend Engineer specializing in design systems, visual testing, and accessible React applications."
+    />
+    <meta property="og:image" content="https://www.norandabrown.com/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://www.norandabrown.com" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Noranda Brown" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Noranda Brown | Senior Frontend Engineer" />
+    <meta
+      name="twitter:description"
+      content="Portfolio of Noranda Brown, Senior Frontend Engineer specializing in design systems, visual testing, and accessible React applications."
+    />
+    <meta name="twitter:image" content="https://www.norandabrown.com/og-image.png" />
 
     <!-- Google Fonts: Figtree -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -20,7 +44,43 @@
       rel="stylesheet"
     />
 
-    <title>Noranda Brown | Senior Frontend Engineer</title>
+    <!-- Preload LCP image -->
+    <link rel="preload" as="image" href="/noranda-brown.webp" type="image/webp" />
+
+    <!-- JSON-LD structured data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Noranda Brown",
+        "url": "https://www.norandabrown.com",
+        "jobTitle": "Senior Frontend Engineer",
+        "image": "https://www.norandabrown.com/noranda-brown.webp",
+        "sameAs": [
+          "https://github.com/noranda",
+          "https://www.linkedin.com/in/noranda/"
+        ],
+        "alumniOf": [
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Brandeis University"
+          },
+          {
+            "@type": "CollegeOrUniversity",
+            "name": "Wellesley College"
+          }
+        ],
+        "knowsAbout": [
+          "Design Systems",
+          "React",
+          "TypeScript",
+          "Visual Testing",
+          "Accessibility",
+          "Tailwind CSS",
+          "Storybook"
+        ]
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
