@@ -46,6 +46,9 @@ const preview: Preview = {
     theme: 'light',
   },
   parameters: {
+    a11y: {
+      test: 'error',
+    },
     controls: {
       matchers: {
         color: /(background|color)$/i,

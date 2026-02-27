@@ -1,4 +1,5 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {expect, userEvent, within} from 'storybook/test';
 import {toast} from 'sonner';
 
 import {Button} from '@/components/ui/button';
@@ -21,35 +22,89 @@ const meta = {
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {
-  render: () => <Button onClick={() => toast('This is a default toast')}>Show Toast</Button>,
-};
+export const Default = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+    const body = within(canvasElement.ownerDocument.body);
 
-export const Success: Story = {
+    await step('Shows toast on button click', async () => {
+      await userEvent.click(await canvas.findByRole('button', {name: 'Show Toast'}));
+      await body.findByText('This is a default toast');
+    });
+  },
+  render: () => <Button onClick={() => toast('This is a default toast')}>Show Toast</Button>,
+} satisfies Story;
+
+export const Success = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+    const body = within(canvasElement.ownerDocument.body);
+
+    await step('Shows success toast on button click', async () => {
+      await userEvent.click(await canvas.findByRole('button', {name: 'Show Success'}));
+      await body.findByText('Achievement unlocked!');
+    });
+  },
   render: () => (
     <Button onClick={() => toast.success('Achievement unlocked!')}>Show Success</Button>
   ),
-};
+} satisfies Story;
 
-export const Error: Story = {
+export const Error = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+    const body = within(canvasElement.ownerDocument.body);
+
+    await step('Shows error toast on button click', async () => {
+      await userEvent.click(await canvas.findByRole('button', {name: 'Show Error'}));
+      await body.findByText('Something went wrong');
+    });
+  },
   render: () => <Button onClick={() => toast.error('Something went wrong')}>Show Error</Button>,
-};
+} satisfies Story;
 
-export const Info: Story = {
+export const Info = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+    const body = within(canvasElement.ownerDocument.body);
+
+    await step('Shows info toast on button click', async () => {
+      await userEvent.click(await canvas.findByRole('button', {name: 'Show Info'}));
+      await body.findByText('Did you know? This is an info toast.');
+    });
+  },
   render: () => (
     <Button onClick={() => toast.info('Did you know? This is an info toast.')}>Show Info</Button>
   ),
-};
+} satisfies Story;
 
-export const Warning: Story = {
+export const Warning = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+    const body = within(canvasElement.ownerDocument.body);
+
+    await step('Shows warning toast on button click', async () => {
+      await userEvent.click(await canvas.findByRole('button', {name: 'Show Warning'}));
+      await body.findByText('Careful! You might enjoy this site.');
+    });
+  },
   render: () => (
     <Button onClick={() => toast.warning('Careful! You might enjoy this site.')}>
       Show Warning
     </Button>
   ),
-};
+} satisfies Story;
 
-export const Loading: Story = {
+export const Loading = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+    const body = within(canvasElement.ownerDocument.body);
+
+    await step('Shows loading toast on button click', async () => {
+      await userEvent.click(await canvas.findByRole('button', {name: 'Show Loading'}));
+      await body.findByText('Loading...');
+    });
+  },
   render: () => (
     <Button
       onClick={() => {
@@ -60,9 +115,19 @@ export const Loading: Story = {
       Show Loading
     </Button>
   ),
-};
+} satisfies Story;
 
-export const WithDescription: Story = {
+export const WithDescription = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+    const body = within(canvasElement.ownerDocument.body);
+
+    await step('Shows toast with description on button click', async () => {
+      await userEvent.click(await canvas.findByRole('button', {name: 'Show With Description'}));
+      await body.findByText('Achievement Unlocked');
+      await body.findByText('You found all the easter eggs!');
+    });
+  },
   render: () => (
     <Button
       onClick={() =>
@@ -74,9 +139,18 @@ export const WithDescription: Story = {
       Show With Description
     </Button>
   ),
-};
+} satisfies Story;
 
-export const WithAction: Story = {
+export const WithAction = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+    const body = within(canvasElement.ownerDocument.body);
+
+    await step('Shows toast with action button', async () => {
+      await userEvent.click(await canvas.findByRole('button', {name: 'Show With Action'}));
+      await body.findByText('File deleted');
+    });
+  },
   render: () => (
     <Button
       onClick={() =>
@@ -91,9 +165,17 @@ export const WithAction: Story = {
       Show With Action
     </Button>
   ),
-};
+} satisfies Story;
 
-export const AllTypes: Story = {
+export const AllTypes = {
+  play: async ({canvasElement, step}) => {
+    const canvas = within(canvasElement);
+
+    await step('Renders all toast type buttons', async () => {
+      const buttons = await canvas.findAllByRole('button');
+      await expect(buttons).toHaveLength(6);
+    });
+  },
   render: () => (
     <div className="flex flex-wrap gap-3">
       <Button onClick={() => toast('Default toast')}>Default</Button>
@@ -111,4 +193,4 @@ export const AllTypes: Story = {
       </Button>
     </div>
   ),
-};
+} satisfies Story;
