@@ -70,7 +70,7 @@ export const PROJECTS: Project[] = [
     links: [
       {
         label: 'GitHub',
-        url: 'https://github.com/noranda/noranda-brown-portfolio',
+        url: 'https://github.com/noranda/norandabrown.com',
       },
     ],
     role: 'Designer & Developer',
